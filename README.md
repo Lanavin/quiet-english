@@ -85,7 +85,6 @@ quiet-english/
 ├── preview.html        все экраны на одной странице (генерируется)
 ├── README.md
 ├── LICENSE
-├── КАК ПОДЕЛИТЬСЯ.md
 ├── docs/
 │   ├── requirements.md
 │   ├── decisions.md
