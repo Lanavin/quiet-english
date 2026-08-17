@@ -1,0 +1,1663 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Quiet English — превью экранов</title>
+<style>
+body{margin:0;background:#EDEDE9;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:#1A1A18}
+.head{max-width:1180px;margin:0 auto;padding:40px 24px 8px}
+.head h1{font-family:ui-serif,Georgia,serif;font-weight:500;font-size:28px;margin:0 0 6px}
+.head p{color:#6C6C64;margin:0;font-size:15px;max-width:640px;line-height:1.6}
+.grid{max-width:1180px;margin:0 auto;padding:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:32px}
+figure{margin:0}
+figcaption{font-size:13px;color:#6C6C64;margin-bottom:10px;letter-spacing:.02em}
+.phone{width:100%;max-width:360px;height:720px;border-radius:28px;overflow:hidden;border:1px solid #D6D6CB;background:#FAFAF8;position:relative;box-shadow:0 2px 4px rgba(0,0,0,.04),0 18px 40px -20px rgba(0,0,0,.25)}
+.view{height:100%;overflow:auto}
+.app nav{position:sticky;bottom:0}
+
+.app /* ==========================================================================
+   ДИЗАЙН-СИСТЕМА
+   Тёплая светлая база, .app один акцент, .app иерархия размером и весом.
+   Шкала отступов кратна 4. Радиусы: 8 / 12 / 16 — и только они.
+   ========================================================================== */
+.app{
+  --bg:#FBF8F2;  --surface:#FFFFFF;  --sunk:#F4EFE4;  --sunk-2:#EDE6D6;
+  --ink:#2B2721; --ink-2:#6B6153;    --ink-3:#857C6E;
+  --line:#E9E1D2; --line-2:#DDD3BF;
+
+  --accent:#A5522F;      --accent-soft:#F7EAE1;  --accent-line:#EFD9C9;
+  --ok:#4E7055;          --ok-soft:#E8EFE7;
+  --sky:#416B85;         --sky-soft:#E4EDF2;
+  --warn:#8A5F0F;        --warn-soft:#FAF0DA;
+  --bad:#9C3E36;         --bad-soft:#F9E7E4;
+
+  --r-s:8px; --r-m:12px; --r-l:16px;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px;
+
+  --fs:17px;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif;
+  --serif:ui-serif,"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --shadow:0 1px 2px rgba(26,26,24,.04), 0 8px 24px -12px rgba(26,26,24,.10);
+}
+.app{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+.app, .app body{margin:0; padding:0}
+.app{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--sans); font-size:var(--fs); line-height:1.6;
+  font-feature-settings:"cv05","ss01"; -webkit-font-smoothing:antialiased;
+  padding-bottom:calc(72px + env(safe-area-inset-bottom));
+}
+.app .wrap{max-width:600px; margin:0 auto; padding:var(--s6) var(--s5) var(--s2)}
+.app /* ---------- типографика ---------- */
+h1{font-family:var(--serif); font-size:1.75rem; font-weight:500; line-height:1.22; letter-spacing:-.015em; margin:0 0 var(--s2)}
+.app h2{font-size:1.14rem; font-weight:600; letter-spacing:-.01em; margin:var(--s7) 0 var(--s3)}
+.app h3{font-size:.78rem; font-weight:600; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); margin:var(--s6) 0 var(--s3)}
+.app p{margin:0 0 var(--s3)}
+.app .lead{color:var(--ink-2); font-size:.97rem; line-height:1.55; margin-bottom:var(--s5); max-width:34em}
+.app .muted{color:var(--ink-2)}
+.app .tiny{font-size:.8rem; line-height:1.5; color:var(--ink-3)}
+.app .num{font-family:var(--serif); font-variant-numeric:tabular-nums; letter-spacing:-.02em}
+.app /* ---------- поверхности ---------- */
+.card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-l); padding:var(--s5)}
+.app .card + .card{margin-top:var(--s3)}
+.app .plain{background:none; border:0; padding:0}
+.app .row{display:flex; gap:var(--s3); align-items:center}
+.app .row.wrap-r{flex-wrap:wrap}
+.app .spacer{flex:1}
+.app .stack > * + *{margin-top:var(--s3)}
+.app /* ---------- кнопки ---------- */
+button{font-family:inherit; font-size:inherit; cursor:pointer; color:inherit}
+.app .btn{
+  border:1px solid var(--line-2); background:var(--surface); color:var(--ink);
+  border-radius:var(--r-m); padding:var(--s3) var(--s4); font-weight:500; font-size:.97rem;
+  min-height:50px; transition:background .15s ease, transform .1s ease, border-color .15s ease;
+}
+.app .btn:hover{background:var(--sunk)}
+.app .btn:active{transform:scale(.98)}
+.app .btn.primary:active{opacity:.92}
+.app .btn.primary{background:var(--ink); border-color:var(--ink); color:var(--bg); font-weight:500}
+.app .btn.primary:hover{background:#000}
+.app .grade:active{transform:scale(.96)}
+.app .grade b{display:block; font-size:.86rem; font-weight:600; line-height:1.25}
+.app .grade span{display:block; font-size:.69rem; color:var(--ink-3); line-height:1.35; margin-top:5px}
+.app .grade.g0{background:var(--bad-soft); border-color:transparent; color:var(--bad)}
+.app .grade.g1{background:var(--warn-soft); border-color:transparent; color:var(--warn)}
+.app .grade.g2{background:var(--ok-soft); border-color:transparent; color:var(--ok)}
+.app .grade.g3{background:var(--sunk); border-color:transparent; color:var(--ink-2)}
+.app .grade.g0 span, .app .grade.g1 span, .app .grade.g2 span, .app .grade.g3 span{color:inherit; opacity:.65}
+.app /* ---------- нижняя навигация ---------- */
+nav{
+  position:static; left:0; right:0; bottom:0; z-index:50;
+  background:color-mix(in srgb, var(--bg) 88%, transparent);
+   
+  border-top:1px solid var(--line);
+  padding:var(--s2) 0 calc(var(--s1) + env(safe-area-inset-bottom));
+  display:flex;
+}
+.app nav button{
+  flex:1; background:none; border:0; color:var(--ink-3);
+  display:flex; flex-direction:column; align-items:center; gap:3px;
+  padding:var(--s1) 2px; font-size:.63rem; letter-spacing:.01em; transition:color .15s ease;
+}
+.app nav button svg{width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round}
+.app nav button.on{color:var(--ink); font-weight:600}
+.app nav button.on svg{stroke-width:1.9}
+.app nav button::after{content:''; width:4px; height:4px; border-radius:50%; background:transparent; margin-top:1px}
+.app nav button.on::after{background:var(--accent)}
+.app .badge{
+  position:absolute; transform:translate(14px,-5px);
+  background:var(--accent); color:#fff; border-radius:9px;
+  font-size:.58rem; padding:1px 5px; font-weight:700; min-width:16px; text-align:center; letter-spacing:0;
+}
+.app .screen{display:none}
+.app .screen.on{display:block; animation:in .24s cubic-bezier(.2,.7,.3,1)}
+@keyframes in{from{opacity:0; transform:translateY(8px)}to{opacity:1; transform:none}}
+.app /* ---------- иллюстрации ---------- */
+.scene{display:block; width:100%; height:132px}
+.app /* Кот не наследует цвета темы: иначе в тёмном режиме он получал светлые
+   глаза на тёмной морде и превращался в кота из фильма ужасов.
+   Шерсть всегда светлая, .app глаза всегда тёмные — в обеих темах. */
+.cat{--fur:#EDE6D6; --fur-line:#DDD3BF; --fur-ink:#2B2721; --fur-pink:#D9A48D; --fur-nose:#C2755C}
+.app .arch .inner{padding:var(--s5) var(--s5) var(--s7); text-align:center; margin-top:-30px; position:relative}
+.app .arch .cat{margin:0 auto var(--s3); display:block}
+.app .hero{padding:0 0 var(--s6)}
+.app .hero .kicker{font-size:.78rem; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); margin-bottom:var(--s2)}
+.app .hero .count{font-family:var(--serif); font-size:3.6rem; line-height:.98; letter-spacing:-.035em; font-variant-numeric:tabular-nums}
+.app .hero .unit{font-size:.97rem; color:var(--ink-2); line-height:1.5; margin:var(--s3) auto var(--s5); max-width:19em}
+.app .metrics{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s2)}
+.app .metrics > div{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-m);
+  padding:var(--s4) var(--s2); text-align:center}
+.app .metrics b{display:block; font-family:var(--serif); font-size:1.55rem; font-weight:500; letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums; line-height:1.1; margin-bottom:6px}
+.app .metrics span{display:block; font-size:.73rem; color:var(--ink-3); line-height:1.35}
+.app .bar{height:5px; border-radius:3px; background:var(--sunk); overflow:hidden}
+.app .bar i{display:block; height:100%; background:var(--accent); border-radius:3px; transition:width .5s cubic-bezier(.2,.7,.3,1)}
+.app .spark{display:flex; gap:3px; align-items:flex-end; height:38px}
+.app .spark div{flex:1; border-radius:2px; background:var(--accent); min-height:4px}
+.app /* ---------- списки ---------- */
+.list{border:1px solid var(--line); border-radius:var(--r-m); overflow:hidden; background:var(--surface)}
+.app .list-item{
+  display:flex; align-items:center; gap:var(--s3); padding:var(--s4);
+  border:0; border-bottom:1px solid var(--line); background:var(--surface);
+  width:100%; text-align:left; min-height:60px; transition:background .15s ease;
+}
+.app .list-item:last-child{border-bottom:0}
+.app .list-item:hover{background:var(--sunk)}
+.app .list-item .ttl{display:block; font-weight:500; font-size:.97rem; line-height:1.4}
+.app .list-item .sub{display:block; font-size:.8rem; color:var(--ink-3); line-height:1.45; margin-top:3px}
+.app .chev{color:var(--line-2); flex:none; font-size:1.15rem; line-height:1; transition:color .15s ease, transform .15s ease}
+.app .list-item:hover .chev{color:var(--ink-3); transform:translateX(2px)}
+.app .dot{width:7px; height:7px; border-radius:50%; background:var(--line-2); flex:none}
+.app .dot.done{background:var(--ok)}
+.app /* ---------- карточка слова ---------- */
+.flip{perspective:1400px; cursor:pointer}
+.app .flip-inner{
+  display:grid; transform-style:preserve-3d;
+  transition:transform .55s cubic-bezier(.2,.75,.25,1);
+}
+.app .flip.flipped .flip-inner{transform:rotateY(180deg)}
+.app .flip-inner > .face{grid-area:1/1; backface-visibility:hidden; -webkit-backface-visibility:hidden}
+.app .flip-inner > .face.back{transform:rotateY(180deg)}
+.app .face{
+  background:var(--surface); border:1px solid var(--line); border-radius:20px;
+  padding:var(--s7) var(--s5); text-align:center; box-shadow:var(--shadow);
+  display:flex; flex-direction:column; justify-content:center; min-height:320px;
+}
+.app .face.front .term{margin-top:var(--s2)}
+@media (prefers-reduced-motion: reduce){
+  .flip-inner{transition:none}
+.app .screen.on{animation:none}
+}
+.app .term{font-family:var(--serif); font-size:2.7rem; font-weight:500; letter-spacing:-.02em; line-height:1.2;
+  overflow-wrap:anywhere; hyphens:auto}
+.app .ipa{font-size:1.15rem; color:var(--accent); margin-top:var(--s2); font-family:var(--sans); letter-spacing:.01em}
+.app .ask{font-size:.76rem; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); margin-bottom:var(--s4)}
+.app .divider{height:1px; background:var(--line); margin:var(--s5) auto; max-width:56px}
+.app .meaning{font-size:1.4rem; line-height:1.35}
+.app .pos{display:block; font-size:.74rem; letter-spacing:.05em; color:var(--ink-3); margin-top:var(--s2)}
+.app /* ---------- формы глагола ---------- */
+.forms{background:var(--sunk); border-radius:var(--r-m); padding:var(--s4); margin-top:var(--s5); text-align:left}
+.app .forms.irr{background:var(--accent-soft)}
+.app .forms-hd{font-size:.7rem; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); margin-bottom:var(--s3)}
+.app .forms.irr .forms-hd{color:var(--accent)}
+.app .forms-list{display:grid; gap:1px; background:var(--line); border-radius:var(--r-s); overflow:hidden}
+.app .frow{display:flex; align-items:baseline; justify-content:space-between; gap:var(--s4);
+  background:var(--sunk); padding:var(--s3) var(--s4)}
+.app .forms.irr .frow{background:var(--accent-soft)}
+.app .frow i{font-style:normal; font-size:.8rem; color:var(--ink-2); line-height:1.4}
+.app .frow b{font-weight:500; font-size:1.05rem; white-space:nowrap}
+.app .frow b.key{font-weight:700; color:var(--accent)}
+.app .forms.irr .frow i{color:var(--ink-2)}
+.app .forms-row{display:flex; flex-wrap:wrap; gap:var(--s3) var(--s4)}
+.app .forms-row span{display:flex; flex-direction:column; font-size:.98rem; line-height:1.35}
+.app .forms-row i{font-style:normal; font-size:.66rem; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-3); margin-bottom:3px}
+.app .forms-row b{font-weight:600}
+.app .forms-note{font-size:.76rem; line-height:1.45; color:var(--ink-2); margin-top:var(--s3)}
+.app .vcard{display:grid; gap:var(--s3); max-width:280px; margin:0 auto; text-align:left}
+.app .vcard > div{display:flex; align-items:baseline; justify-content:space-between; gap:var(--s4);
+  padding-bottom:var(--s2); border-bottom:1px solid var(--line)}
+.app .vcard i{font-style:normal; font-size:.72rem; letter-spacing:.04em; color:var(--ink-3)}
+.app .vcard b{font-family:var(--serif); font-size:1.5rem; font-weight:500}
+.app .vtable{border:1px solid var(--line); border-radius:var(--r-m); overflow:hidden; background:var(--surface)}
+.app .vhead{display:grid; grid-template-columns:1fr 1fr 1fr; gap:var(--s2); padding:var(--s3) var(--s4);
+  background:var(--sunk); font-size:.68rem; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-3)}
+.app .vrow{display:grid; grid-template-columns:1fr 1fr 1fr; gap:var(--s2) var(--s2);
+  padding:var(--s3) var(--s4); border-top:1px solid var(--line); font-size:.98rem; align-items:baseline}
+.app .vrow .v1{font-weight:600}
+.app .vrow .vru{grid-column:1 / -1; font-size:.78rem; color:var(--ink-3); margin-top:-2px}
+.app .example{background:var(--sunk); border-radius:var(--r-m); padding:var(--s4); margin-top:var(--s5); text-align:left}
+.app .example .lbl{font-size:.7rem; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); margin-bottom:var(--s2)}
+.app .example .en{font-size:1rem; line-height:1.55}
+.app .example .ru{font-size:.86rem; color:var(--ink-2); line-height:1.45; margin-top:6px}
+.app .speak{
+  border:1px solid var(--line-2); background:var(--surface); border-radius:99px;
+  padding:7px 14px; font-size:.78rem; color:var(--ink-2); display:inline-flex; gap:6px; align-items:center; min-height:36px;
+}
+.app .speak:hover{background:var(--sunk)}
+.app .speak svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.app /* ---------- грамматика ---------- */
+.note{border-radius:0 var(--r-m) var(--r-m) 0; padding:var(--s4) var(--s5);
+  margin:var(--s4) 0; font-size:.95rem; line-height:1.65; border-left:3px solid var(--line-2)}
+.app .note.why{background:var(--sunk); border-left-color:var(--ink-3)}
+.app .note.trap{background:var(--warn-soft); color:#5C4210; border-left-color:var(--warn)}
+.app .opt:hover:not(:disabled){background:var(--sunk)}
+.app .opt.correct{background:var(--ok-soft); border-color:transparent; color:var(--ok); font-weight:600}
+.app .opt.wrong{background:var(--bad-soft); border-color:transparent; color:var(--bad)}
+.app .opt:disabled{cursor:default}
+.app .exline{padding:var(--s3) 0; border-bottom:1px solid var(--line)}
+.app .exline:last-child{border-bottom:0}
+.app /* ---------- звуки ---------- */
+.mouth{width:100%; max-width:320px; margin:0 auto; display:block}
+.app .mouth .head{fill:var(--sunk); stroke:var(--ink-3); stroke-width:2.2; stroke-linejoin:round}
+.app .mouth .cav{fill:var(--surface); stroke:var(--ink-3); stroke-width:1.8; stroke-linejoin:round}
+.app .mouth .nasal{fill:var(--bg); stroke:var(--line-2); stroke-width:1.5}
+.app .mouth .teeth{fill:var(--surface); stroke:var(--ink-2); stroke-width:1.6; stroke-linejoin:round}
+.app .mouth .tongue{fill:var(--accent-soft); stroke:var(--accent); stroke-width:2.6; stroke-linejoin:round}
+.app .mouth .air{fill:none; stroke:var(--warn); stroke-width:2.6; stroke-dasharray:7 5; stroke-linecap:round}
+.app .mouth .vox{fill:none; stroke:var(--accent); stroke-width:2.4; stroke-linecap:round}
+.app .mouth .lbl{fill:var(--ink-3); font-size:11px; font-family:inherit}
+.app .mouth .lblA{fill:var(--accent); font-size:11px; font-family:inherit; font-weight:600}
+.app .mouth .lipsF{fill:var(--accent-soft); stroke:var(--accent); stroke-width:2.6; stroke-linejoin:round}
+.app .mouth .gap{fill:var(--ink)}
+.app .mouth .thF{fill:var(--surface); stroke:var(--ink-2); stroke-width:1.4}
+.app .mouth .tgF{fill:var(--accent-soft); stroke:var(--accent); stroke-width:2}
+.app .sound-hd{display:flex; align-items:baseline; gap:var(--s4); flex-wrap:wrap; margin-bottom:var(--s1)}
+.app .sound-hd .sym{font-family:var(--serif); font-size:2.4rem; color:var(--accent); line-height:1}
+.app .step{display:flex; align-items:flex-start; gap:var(--s4); padding:var(--s3) 0; line-height:1.55}
+.app .step i{flex:none; width:24px; height:24px; border-radius:50%; background:var(--sunk); color:var(--ink-2);
+  display:grid; place-items:center; font-size:.72rem; font-weight:700; font-style:normal; margin-top:2px}
+.app .minpair{display:flex; align-items:center; gap:var(--s4); padding:var(--s4) 0; border-bottom:1px solid var(--line)}
+.app .minpair:last-child{border-bottom:0}
+.app /* ---------- чтение ---------- */
+.text-body{font-size:1.06rem; line-height:1.85}
+.app .w{border-bottom:1px dotted var(--line-2); cursor:pointer; padding:0 1px; transition:background .12s ease}
+.app .w:hover{background:var(--accent-soft); border-bottom-color:var(--accent)}
+.app .w.known{border-bottom-color:transparent}
+.app .pop{
+  position:static; left:var(--s3); right:var(--s3); bottom:calc(84px + env(safe-area-inset-bottom)); z-index:60;
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--r-l); padding:var(--s5);
+  box-shadow:0 16px 48px -12px rgba(26,26,24,.22); max-width:520px; margin:0 auto; display:none;
+}
+.app .pop.on{display:block; animation:in .2s cubic-bezier(.2,.7,.3,1)}
+.app /* ---------- разговорник ---------- */
+.phrase{border-bottom:1px solid var(--line); padding:var(--s4) 0}
+.app .phrase:last-child{border-bottom:0}
+.app .phrase.hear{opacity:.92}
+.app .phrase .en{font-size:1.03rem; line-height:1.55}
+.app .phrase.hear .en{color:var(--ink-2)}
+.app .phrase .ru{font-size:.86rem; color:var(--ink-3); line-height:1.45; margin-top:5px}
+.app .phrase .acts{display:flex; gap:var(--s2) var(--s2); margin-top:var(--s3); flex-wrap:wrap}
+.app .mini{
+  border:1px solid var(--line-2); background:var(--surface); border-radius:99px;
+  padding:7px 13px; font-size:.76rem; color:var(--ink-2);
+  display:inline-flex; gap:5px; align-items:center; min-height:38px;
+}
+.app .mini:hover{background:var(--sunk)}
+.app .mini svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.app .mini.on{background:var(--ok-soft); border-color:transparent; color:var(--ok); font-weight:600}
+.app .sec-hd{font-size:.76rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); margin:var(--s7) 0 var(--s2)}
+.app .big{position:static; inset:0; z-index:200; background:var(--bg); display:none; padding:var(--s6); overflow:auto}
+.app .big.on{display:flex; flex-direction:column; justify-content:center; animation:in .2s ease}
+.app .big .txt{font-family:var(--serif); font-size:clamp(2rem,8vw,3.3rem); font-weight:500; line-height:1.2; letter-spacing:-.02em; text-align:center}
+.app .big .sub{font-size:1rem; color:var(--ink-2); text-align:center; margin-top:var(--s5)}
+.app .big .hint{position:static; left:0; right:0; bottom:calc(var(--s6) + env(safe-area-inset-bottom)); text-align:center; font-size:.76rem; color:var(--ink-3)}
+.app /* ---------- доля знакомых слов ---------- */
+.know{flex:none; font-size:.78rem; font-weight:600; padding:3px 9px; border-radius:99px;
+  font-variant-numeric:tabular-nums; letter-spacing:-.01em}
+.app .know.ok{background:var(--ok-soft); color:var(--ok)}
+.app .know.mid{background:var(--warn-soft); color:var(--warn)}
+.app .know.hard{background:var(--sunk); color:var(--ink-3)}
+.app /* ---------- личная подсказка к слову ---------- */
+.note-card{background:var(--sunk); border-radius:var(--r-m); padding:var(--s4); margin-top:var(--s4); text-align:left}
+.app .note-card.leech{background:var(--bad-soft)}
+.app .nc-hd{font-size:.7rem; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); margin-bottom:var(--s2)}
+.app .note-card.leech .nc-hd{color:var(--bad)}
+.app .nc-body{font-size:.98rem; line-height:1.5}
+.app /* ---------- упражнение на вписывание ---------- */
+.cloze-en{font-size:1.3rem; line-height:1.6; margin-bottom:var(--s3)}
+.app .cloze-ru{font-size:.95rem; color:var(--ink-2); line-height:1.5}
+.app .cloze-hint{font-size:.84rem; color:var(--ink-3); margin-top:var(--s3); line-height:1.45}
+.app .cloze-input{
+  width:100%; margin-top:var(--s5); padding:var(--s3) var(--s4); min-height:52px;
+  border:1px solid var(--line-2); border-radius:var(--r-m); background:var(--bg);
+  font-family:var(--sans); font-size:1.15rem; color:var(--ink); outline:none;
+}
+.app .cloze-input:focus{border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft)}
+.app .cloze-res{margin-top:var(--s5); padding:var(--s3) var(--s4); border-radius:var(--r-m); font-size:.98rem; line-height:1.5}
+.app .cloze-res.ok{background:var(--ok-soft); color:var(--ok); font-weight:500}
+.app .cloze-res.no{background:var(--bad-soft); color:var(--bad)}
+.app .cloze-full{margin-top:var(--s3); font-size:1.05rem; line-height:1.55; color:var(--ink-2)}
+.app /* ---------- маршрут ---------- */
+.path{display:grid; gap:var(--s2)}
+.app .pstep{display:flex; gap:var(--s4); padding:var(--s5); border:1px solid var(--line);
+  border-radius:var(--r-m); background:var(--surface)}
+.app .pstep.done{background:none; border-color:transparent; padding:var(--s3) var(--s5); opacity:.75}
+.app .pstep.done .tiny, .app .pstep.done .pgoal{display:none}
+.app .pstep.now{border-color:var(--accent-line); background:var(--accent-soft)}
+.app .pmark{flex:none; width:30px; height:30px; border-radius:50%; display:grid; place-items:center;
+  background:var(--sunk); color:var(--ink-2); font-size:.85rem; font-weight:600}
+.app .pstep.done .pmark{background:var(--ok-soft); color:var(--ok)}
+.app .pstep.now .pmark{background:var(--accent); color:#fff}
+.app .pbody{flex:1}
+.app .ptitle{font-weight:500; font-size:1.02rem; line-height:1.35}
+.app .pnow{display:inline-block; margin-left:var(--s2); font-size:.66rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--accent); font-weight:700; vertical-align:middle}
+.app .pgoal{font-size:.84rem; color:var(--ink-2); line-height:1.45}
+.app /* ---------- авторство ---------- */
+.author{text-align:center; margin:var(--s7) 0 var(--s6); padding-top:var(--s6); border-top:1px solid var(--line)}
+.app .author .cat{margin:0 auto var(--s3); display:block; opacity:.9}
+.app .a-name{font-family:var(--serif); font-size:1.15rem; letter-spacing:-.01em}
+.app .a-line{font-size:.84rem; color:var(--ink-2); margin-top:var(--s1)}
+.app /* ---------- прочее ---------- */
+.empty{text-align:center; padding:var(--s7) var(--s5)}
+.app .empty .mark{width:52px; height:52px; border-radius:50%; background:var(--ok-soft); color:var(--ok);
+  display:grid; place-items:center; margin:0 auto var(--s4); font-size:1.4rem}
+.app /* ---------- финал сессии ---------- */
+.finish{text-align:center; padding:var(--s6) 0 var(--s7); animation:rise .5s cubic-bezier(.2,.75,.25,1)}
+.app .finish .cat{margin:0 auto var(--s4); display:block; animation:pop .5s cubic-bezier(.2,1.5,.4,1) .1s both}
+.app .finish h1{margin-bottom:var(--s1)}
+.app .won{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--r-l);
+  padding:var(--s5); text-align:left; animation:rise .5s cubic-bezier(.2,.75,.25,1) .18s both;
+}
+.app .won-hd{font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ok); font-weight:600; margin-bottom:var(--s3)}
+.app .won-row{padding:var(--s3) 0; border-bottom:1px solid var(--line)}
+.app .won-row:last-child{border-bottom:0}
+.app .won-w{display:block; font-family:var(--serif); font-size:1.32rem; line-height:1.3}
+.app .won-tr{display:block; color:var(--ink-2); font-size:.92rem; line-height:1.4; margin-top:2px}
+.app .won-iv{display:block; font-size:.76rem; color:var(--ink-3); line-height:1.4; margin-top:5px}
+@keyframes rise{from{opacity:0; transform:translateY(14px)}to{opacity:1; transform:none}}
+@keyframes pop{from{opacity:0; transform:scale(.6)}to{opacity:1; transform:scale(1)}}
+@media (prefers-reduced-motion: reduce){
+  .finish,.finish .mark,.won{animation:none}
+}
+.app .sw{display:flex; align-items:flex-start; gap:var(--s4); padding:var(--s4) 0; border-bottom:1px solid var(--line); cursor:pointer; line-height:1.45}
+.app .sw:last-child{border-bottom:0}
+.app .sw input{width:20px; height:20px; accent-color:var(--ink); margin-top:2px; flex:none}
+.app .seg{display:flex; gap:var(--s1); background:var(--sunk); padding:3px; border-radius:var(--r-m)}
+.app .seg button{flex:1; border:0; background:none; border-radius:9px; padding:9px; font-size:.85rem; color:var(--ink-2); min-height:42px}
+.app .seg button.on{background:var(--surface); color:var(--ink); font-weight:600; box-shadow:0 1px 2px rgba(26,26,24,.06)}
+.app input[type=range]{width:100%; accent-color:var(--ink)}
+.app kbd{background:var(--sunk); border-radius:5px; padding:1px 6px; font-family:inherit; font-size:.85em}
+
+</style></head><body>
+<div class="head"><h1>Quiet English — экраны</h1>
+<p>Реальная вёрстка и реальные стили приложения, просто выведенные на одну страницу. Прокручивай каждый экран внутри рамки.</p></div>
+<div class="grid">
+<figure><figcaption>Главная</figcaption>
+  <div class="phone"><div class="view app"><div class="wrap">
+  <div id="home-body">
+  <div class="arch">
+    <svg class="scene" viewBox="0 0 400 150" preserveAspectRatio="none" role="img" aria-label="Пейзаж">
+  <rect width="400" height="150" fill="#E3E4EC"></rect>
+  <circle cx="308" cy="46" r="20" fill="#EFE7D2"></circle>
+  <path d="M0 104 C48 74 84 96 128 82 C176 66 214 92 258 84 C312 74 356 96 400 86 L400 150 L0 150 Z" fill="#B7B9C8"></path>
+  <path d="M0 122 C56 100 96 118 148 108 C204 97 244 116 296 110 C344 104 372 116 400 110 L400 150 L0 150 Z" fill="#8E93A6"></path>
+  <path d="M0 138 C60 126 110 140 168 132 C232 123 282 138 340 132 C368 129 386 134 400 132 L400 150 L0 150 Z" fill="#666C81"></path>
+  <g fill="#4B5063">
+    <path d="M52 134 L64 98 L76 134 Z"></path><path d="M55 120 L64 104 L73 120 Z"></path>
+    <path d="M104 136 L113 110 L122 136 Z"></path>
+    <path d="M196 133 L207 100 L218 133 Z"></path><path d="M199 120 L207 106 L215 120 Z"></path>
+    <path d="M256 137 L264 114 L272 137 Z"></path>
+    <path d="M322 132 L334 96 L346 132 Z"></path><path d="M325 118 L334 102 L343 118 Z"></path>
+  </g>
+  </svg>
+    <div class="inner hero">
+      <svg class="cat" width="84" height="80" viewBox="0 0 132 122" role="img" aria-label="Кот">
+    <path d="M90 104 C110 106 118 92 111 81 C106 73 96 76 97 84" class="c-tail"></path>
+    <path d="M34 108 C34 80 46 64 62 64 C78 64 90 80 90 108 Z" class="c-body"></path>
+    <ellipse cx="47" cy="107" rx="9" ry="5.5" class="c-body"></ellipse>
+    <ellipse cx="77" cy="107" rx="9" ry="5.5" class="c-body"></ellipse>
+    <path d="M41 28 L37 7 L58 21 Z" class="c-body"></path>
+    <path d="M83 28 L87 7 L66 21 Z" class="c-body"></path>
+    <path d="M44 25 L42 14 L52 21 Z" class="c-inner"></path>
+    <path d="M80 25 L82 14 L72 21 Z" class="c-inner"></path>
+    <circle cx="62" cy="45" r="26" class="c-body"></circle>
+    <ellipse cx="45" cy="55" rx="6" ry="3.6" class="c-blush"></ellipse>
+    <ellipse cx="79" cy="55" rx="6" ry="3.6" class="c-blush"></ellipse>
+    <circle cx="53" cy="45" r="3.6" class="c-eye"></circle><circle cx="71" cy="45" r="3.6" class="c-eye"></circle>
+       <circle cx="54.4" cy="43.6" r="1.2" fill="#fff"></circle><circle cx="72.4" cy="43.6" r="1.2" fill="#fff"></circle>
+    <path d="M57.5 53 L66.5 53 L62 58.5 Z" class="c-nose"></path>
+    <path d="M62 58.5 q-4.5 4.5 -8 1.5 M62 58.5 q4.5 4.5 8 1.5" class="c-line"></path>
+    <path d="M37 47 L19 42 M36 53 L18 55 M87 47 L105 42 M88 53 L106 55" class="c-whisk"></path>
+  </svg>
+      <div class="kicker">Доброй ночи</div>
+      
+        <div class="count">56</div>
+        <div class="unit">карточек к повторению · около 14 мин</div>
+        <div class="stack">
+          <button class="btn primary block" onclick="go('cards');startSession()">Начать</button>
+          <button class="btn block" onclick="go('cards');startSession(5)">Только пять карточек</button>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div><b>86</b><span>выучено</span></div>
+    <div><b>38</b><span>учатся</span></div>
+    <div><b>673</b><span>всего</span></div>
+  </div>
+
+  <h2>Словарный запас</h2>
+  <div class="row" style="justify-content:space-between; margin-bottom:var(--s2)">
+    <span class="tiny">выучено 86 из 673 слов и фраз</span>
+    <span class="tiny num">13%</span>
+  </div>
+  <div class="bar"><i style="width:13%"></i></div>
+
+  <h2>Последние две недели</h2>
+  <div class="spark"><div title="2026-08-05: 11" style="height:25px;opacity:0.72"></div><div title="2026-08-06: 0" style="height:4px;opacity:0.16"></div><div title="2026-08-07: 21" style="height:38px;opacity:0.9199999999999999"></div><div title="2026-08-08: 12" style="height:27px;opacity:0.74"></div><div title="2026-08-09: 0" style="height:4px;opacity:0.16"></div><div title="2026-08-10: 22" style="height:38px;opacity:0.94"></div><div title="2026-08-11: 13" style="height:28px;opacity:0.76"></div><div title="2026-08-12: 0" style="height:4px;opacity:0.16"></div><div title="2026-08-13: 23" style="height:38px;opacity:0.96"></div><div title="2026-08-14: 14" style="height:30px;opacity:0.78"></div><div title="2026-08-15: 0" style="height:4px;opacity:0.16"></div><div title="2026-08-16: 24" style="height:38px;opacity:0.98"></div><div title="2026-08-17: 15" style="height:31px;opacity:0.8"></div><div title="2026-08-18: 0" style="height:4px;opacity:0.16"></div></div>
+  <p class="tiny" style="margin-top:var(--s3)">
+    9 занятий за месяц. Счётчика дней подряд здесь нет,
+    и сгорать нечему: пропуск не откатывает прогресс, карточки просто подождут.
+  </p>
+
+  <h2>С чего идти дальше</h2>
+  <div class="list" style="margin-bottom:var(--s3)">
+    <button class="list-item" onclick="go('home','path')">
+      <span class="dot done"></span>
+      <span style="flex:1"><span class="ttl">Путь · шаг 1 из 9</span><span class="sub">Пять фраз-выручалок</span></span>
+      <span class="chev">›</span>
+    </button>
+    <button class="list-item" onclick="go('home','how')">
+      <span class="dot"></span>
+      <span style="flex:1"><span class="ttl">Как это устроено</span><span class="sub">Что делают кнопки оценки и откуда берутся интервалы</span></span>
+      <span class="chev">›</span>
+    </button>
+  </div>
+
+  <h2>Разделы</h2>
+  <div class="list">
+    <button class="list-item" onclick="go('trip')">
+        <span class="dot "></span>
+        <span style="flex:1"><span class="ttl">Разговорник для поездки</span><span class="sub">27 бытовых сценариев</span></span>
+        <span class="chev">›</span>
+      </button><button class="list-item" onclick="go('gram')">
+        <span class="dot done"></span>
+        <span style="flex:1"><span class="ttl">Грамматика</span><span class="sub">1 из 20 тем разобрано</span></span>
+        <span class="chev">›</span>
+      </button><button class="list-item" onclick="go('sound')">
+        <span class="dot "></span>
+        <span style="flex:1"><span class="ttl">Звуки и артикуляция</span><span class="sub">8 звуков, которых нет в русском</span></span>
+        <span class="chev">›</span>
+      </button><button class="list-item" onclick="go('read')">
+        <span class="dot done"></span>
+        <span style="flex:1"><span class="ttl">Чтение</span><span class="sub">1 из 12 текстов прочитано</span></span>
+        <span class="chev">›</span>
+      </button>
+  </div>
+
+  <h2>Настройки</h2>
+  <div class="tiny" style="margin-bottom:var(--s2)">Оформление</div>
+  <div class="seg" style="margin-bottom:var(--s4)">
+    <button class="on" onclick="S.opts.theme='light';save();applyTheme();render()">Светлая</button><button class="" onclick="S.opts.theme='dark';save();applyTheme();render()">Тёмная</button>
+  </div>
+
+  <label class="sw"><input type="checkbox" checked="" onchange="S.opts.audio=this.checked;save();render()">
+    <span>Озвучка<div class="tiny">Кнопка звука у слов и примеров. Никогда не обязательна и не влияет на прогресс.</div></span></label>
+  <label class="sw"><input type="checkbox" checked="" onchange="S.opts.mode=this.checked?'both':'en-ru';save();render()">
+    <span>Спрашивать в обе стороны<div class="tiny">Не только «англ → рус», но и обратно. Обратное направление тренирует активный запас.</div></span></label>
+  <label class="sw"><input type="checkbox" checked="" onchange="S.opts.write=this.checked;save();render()">
+    <span>Иногда просить вписать слово<div class="tiny">У слова, которое уже узнаётся, приложение прячет его в собственном примере и просит вписать. Это тренирует не узнавание, а способность вспомнить слово самой — то, что нужно в разговоре.</div></span></label>
+
+  <div style="padding:var(--s4) 0; border-bottom:1px solid var(--line)">
+    <div class="row" style="justify-content:space-between; margin-bottom:var(--s2)">
+      <span style="font-size:.95rem">Новых слов за сессию</span><span class="num" style="font-size:1.1rem">8</span>
+    </div>
+    <input type="range" min="3" max="25" value="8" oninput="S.opts.newPerSession=+this.value;save();renderHome()">
+  </div>
+  <div style="padding:var(--s4) 0">
+    <div class="row" style="justify-content:space-between; margin-bottom:var(--s2)">
+      <span style="font-size:.95rem">Размер шрифта</span><span class="num" style="font-size:1.1rem">17</span>
+    </div>
+    <input type="range" min="15" max="24" value="17" oninput="S.opts.fs=+this.value;save();render()">
+  </div>
+
+  <h2>Колоды</h2>
+  <p class="tiny" style="margin-top:calc(var(--s3) * -1)">Слова идут по частоте: чем раньше колода, тем чаще эти слова встречаются в живой речи.</p>
+  
+    <label class="sw">
+      <input type="checkbox" checked="" onchange="S.opts.decks['v1']=this.checked;save();render()">
+      <span>
+        <span style="font-size:.95rem; display:block">Частотность · 1–60: глаголы</span>
+        <span class="tiny" style="display:block; margin-top:3px">60 слов · Половина всей английской речи держится на нескольких десятках глаголов. Это они.</span>
+      </span>
+    </label>
+    <label class="sw">
+      <input type="checkbox" checked="" onchange="S.opts.decks['n1']=this.checked;save();render()">
+      <span>
+        <span style="font-size:.95rem; display:block">Частотность · 60–110: существительные</span>
+        <span class="tiny" style="display:block; margin-top:3px">50 слов · То, о чём люди говорят чаще всего.</span>
+      </span>
+    </label>
+    <label class="sw">
+      <input type="checkbox" checked="" onchange="S.opts.decks['a1']=this.checked;save();render()">
+      <span>
+        <span style="font-size:.95rem; display:block">Частотность · 110–145: прилагательные</span>
+        <span class="tiny" style="display:block; margin-top:3px">35 слов · Без них можно назвать предмет, но нельзя сказать о нём ничего.</span>
+      </span>
+    </label>
+    <label class="sw">
+      <input type="checkbox" checked="" onchange="S.opts.decks['f1']=this.checked;save();render()">
+      <span>
+        <span style="font-size:.95rem; display:block">Частотность · 145–200: связки</span>
+        <span class="tiny" style="display:block; margin-top:3px">31 слово · Не переводятся по одному, но без них речь рассыпается.</span>
+      </span>
+    </label>
+    <label class="sw">
+      <input type="checkbox" checked="" onchange="S.opts.decks['f2']=this.checked;save();render()">
+      <span>
+        <span style="font-size:.95rem; display:block">Частотность · 200–400</span>
+        <span class="tiny" style="display:block; margin-top:3px">99 слов · Продолжение по убыванию частоты. Модальные, местоимения, предлоги и глаголы второй сотни.</span>
+      </span>
+    </label>
+    <label class="sw">
+      <input type="checkbox" checked="" onchange="S.opts.decks['f3']=this.checked;save();render()">
+      <span>
+        <span style="font-size:.95rem; display:block">Частотность · 400–700</span>
+        <span class="tiny" style="display:block; margin-top:3px">100 слов · Действия, тело, город. Здесь начинается всё, что нужно в поездке.</span>
+      </span>
+    </label>
+    <label class="sw">
+      <input type="checkbox" checked="" onchange="S.opts.decks['f4']=this.checked;save();render()">
+      <span>
+        <span style="font-size:.95rem; display:block">Частотность · 700–1000</span>
+        <span class="tiny" style="display:block; margin-top:3px">101 слово · Свойства, быт, еда, документы. Замыкает тысячу самых нужных слов.</span>
+      </span>
+    </label>
+    <label class="sw">
+      <input type="checkbox" checked="" onchange="S.opts.decks['f5']=this.checked;save();render()">
+      <span>
+        <span style="font-size:.95rem; display:block">Частотность · 1000–1400: действия</span>
+        <span class="tiny" style="display:block; margin-top:3px">100 слов · Глаголы, без которых разговор упирается в потолок примерно на третьей минуте.</span>
+      </span>
+    </label>
+    <label class="sw">
+      <input type="checkbox" checked="" onchange="S.opts.decks['f6']=this.checked;save();render()">
+      <span>
+        <span style="font-size:.95rem; display:block">Частотность · 1400–1800: вещи и свойства</span>
+        <span class="tiny" style="display:block; margin-top:3px">97 слов · Предметы, места и признаки, которые всплывают в любом бытовом разговоре.</span>
+      </span>
+    </label>
+
+  <h2>Резервная копия</h2>
+  <p class="tiny" style="margin-top:calc(var(--s3) * -1)">Прогресс лежит в памяти браузера. Если очистить данные сайта или сменить телефон, он пропадёт. Файл от этого спасает.</p>
+  <div class="stack" style="margin-top:var(--s3)">
+    <button class="btn block" onclick="exportProgress()">Сохранить прогресс в файл</button>
+    <label class="btn block" style="display:block; text-align:center; cursor:pointer">Восстановить из файла
+      <input type="file" accept="application/json,.json" style="display:none" onchange="importProgress(this)">
+    </label>
+  </div>
+
+  <p class="tiny" style="margin:var(--s6) 0 var(--s3)">Данные хранятся только на этом устройстве и никуда не отправляются.</p>
+  <button class="btn ghost" style="color:var(--bad)" onclick="if(confirm('Удалить весь прогресс? Это необратимо.')){S=JSON.parse(JSON.stringify(DEFAULTS));load();save();render()}">Сбросить прогресс</button>
+
+  <div class="author">
+    <svg class="cat" width="58" height="55" viewBox="0 0 132 122" role="img" aria-label="Кот">
+    <path d="M90 104 C110 106 118 92 111 81 C106 73 96 76 97 84" class="c-tail"></path>
+    <path d="M34 108 C34 80 46 64 62 64 C78 64 90 80 90 108 Z" class="c-body"></path>
+    <ellipse cx="47" cy="107" rx="9" ry="5.5" class="c-body"></ellipse>
+    <ellipse cx="77" cy="107" rx="9" ry="5.5" class="c-body"></ellipse>
+    <path d="M41 28 L37 7 L58 21 Z" class="c-body"></path>
+    <path d="M83 28 L87 7 L66 21 Z" class="c-body"></path>
+    <path d="M44 25 L42 14 L52 21 Z" class="c-inner"></path>
+    <path d="M80 25 L82 14 L72 21 Z" class="c-inner"></path>
+    <circle cx="62" cy="45" r="26" class="c-body"></circle>
+    <ellipse cx="45" cy="55" rx="6" ry="3.6" class="c-blush"></ellipse>
+    <ellipse cx="79" cy="55" rx="6" ry="3.6" class="c-blush"></ellipse>
+    <path d="M47 46 q6 -7 12 0" class="c-line"></path><path d="M65 46 q6 -7 12 0" class="c-line"></path>
+    <path d="M57.5 53 L66.5 53 L62 58.5 Z" class="c-nose"></path>
+    <path d="M62 58.5 q-4.5 4.5 -8 1.5 M62 58.5 q4.5 4.5 8 1.5" class="c-line"></path>
+    <path d="M37 47 L19 42 M36 53 L18 55 M87 47 L105 42 M88 53 L106 55" class="c-whisk"></path>
+  </svg>
+    <div class="a-name">Quiet English</div>
+    <div class="a-line">© 2026 Анастасия · автор проекта</div>
+    <a class="btn" href="https://github.com/lanavin" target="_blank" rel="noopener" style="margin-top:var(--s4); display:inline-flex; min-height:44px; padding:var(--s2) var(--s5); align-items:center">github.com/lanavin</a>
+    <p class="tiny" style="margin-top:var(--s4)">Приложение бесплатное, с открытым кодом, лицензия MIT.
+    Всё нарисовано и написано с нуля: чужих изображений и заимствованного контента здесь нет.</p>
+  </div></div>
+</div><nav>
+  <button data-go="home" class="on"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V20h14V9.5"></path></svg>Дом</button>
+  <button data-go="cards" class=""><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="14" rx="2.5"></rect><path d="M7 3h11a3 3 0 0 1 3 3v11"></path></svg><span style="position:relative">Слова<i class="badge" id="nav-due" style="display: inline-block;">77</i></span></button>
+  <button data-go="trip" class=""><svg viewBox="0 0 24 24"><path d="M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"></path><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8"></path></svg>Фразы</button>
+  <button data-go="gram" class=""><svg viewBox="0 0 24 24"><path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"></path><path d="M8 8h6M8 12h6"></path></svg>Правила</button>
+  <button data-go="sound" class=""><svg viewBox="0 0 24 24"><path d="M4 15V9h4l5-4v14l-5-4z"></path><path d="M17 9.5a4 4 0 0 1 0 5"></path></svg>Звуки</button>
+  <button data-go="read" class=""><svg viewBox="0 0 24 24"><path d="M12 6.5C10 5 7.5 4.5 4 5v13c3.5-.5 6 0 8 1.5 2-1.5 4.5-2 8-1.5V5c-3.5-.5-6 0-8 1.5z"></path><path d="M12 6.5v13"></path></svg>Тексты</button>
+</nav></div></div></figure>
+<figure><figcaption>Карточка слова</figcaption>
+  <div class="phone"><div class="view app"><div class="wrap">
+  <div id="cards-body">
+  <div class="row" style="margin-bottom:var(--s2)">
+    <button class="btn ghost" onclick="go('home')">← выйти</button>
+    <div class="spacer"></div>
+    <span class="tiny num">0 / 56</span>
+  </div>
+  <div class="bar" style="margin-bottom:var(--s5)"><i style="width:0%"></i></div>
+
+  <div class="flip flipped" onclick="if(!flip){flip=true;render()}">
+    <div class="flip-inner">
+      <div class="face front">
+        <div class="ask">как это по-английски?</div>
+       <div class="term" style="font-size:2rem">здоровье</div>
+       <div class="pos">существительное</div>
+        <p class="tiny" style="margin:var(--s6) 0 0">нажми, чтобы увидеть ответ</p>
+      </div>
+      <div class="face back">
+    <div class="term" style="font-size:2.7rem">health</div>
+    <div class="ipa">/helθ/</div>
+    <div class="row" style="justify-content:center;margin-top:var(--s3)">
+      <button class="speak" onclick="event.stopPropagation();speak('health',1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg> медленно</button></div>
+    <div class="divider"></div>
+    <div class="meaning">здоровье</div>
+    <div class="pos">существительное</div>
+    
+    
+    <div class="example">
+      <div class="lbl">в предложении</div>
+      <div class="en">Health comes first.</div>
+      <div class="ru">Здоровье прежде всего.</div>
+      <div style="margin-top:var(--s3)"><button class="speak" onclick="event.stopPropagation();speak('Health comes first.',1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg> медленно</button></div>
+    </div>
+    </div>
+    </div>
+  </div>
+
+  
+  <div class="grades" style="margin-top:var(--s4)">
+    <button class="grade g0" onclick="gradeCard('health',0)"><b>Не помню</b><span>сегодня ещё раз</span></button>
+    <button class="grade g1" onclick="gradeCard('health',1)"><b>Трудно</b><span>завтра</span></button>
+    <button class="grade g2" onclick="gradeCard('health',2)"><b>Нормально</b><span>через 3 дн.</span></button>
+    <button class="grade g3" onclick="gradeCard('health',3)"><b>Легко</b><span>через 6 дн.</span></button>
+  </div>
+  <p class="tiny" style="text-align:center;margin-top:var(--s4)">Отвечай честно — от этого зависит, когда слово вернётся.</p>
+  </div>
+</div><nav>
+  <button data-go="home" class="on"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V20h14V9.5"></path></svg>Дом</button>
+  <button data-go="cards" class=""><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="14" rx="2.5"></rect><path d="M7 3h11a3 3 0 0 1 3 3v11"></path></svg><span style="position:relative">Слова<i class="badge" id="nav-due" style="display: inline-block;">77</i></span></button>
+  <button data-go="trip" class=""><svg viewBox="0 0 24 24"><path d="M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"></path><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8"></path></svg>Фразы</button>
+  <button data-go="gram" class=""><svg viewBox="0 0 24 24"><path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"></path><path d="M8 8h6M8 12h6"></path></svg>Правила</button>
+  <button data-go="sound" class=""><svg viewBox="0 0 24 24"><path d="M4 15V9h4l5-4v14l-5-4z"></path><path d="M17 9.5a4 4 0 0 1 0 5"></path></svg>Звуки</button>
+  <button data-go="read" class=""><svg viewBox="0 0 24 24"><path d="M12 6.5C10 5 7.5 4.5 4 5v13c3.5-.5 6 0 8 1.5 2-1.5 4.5-2 8-1.5V5c-3.5-.5-6 0-8 1.5z"></path><path d="M12 6.5v13"></path></svg>Тексты</button>
+</nav></div></div></figure>
+<figure><figcaption>Разговорник · сцена</figcaption>
+  <div class="phone"><div class="view app"><div class="wrap">
+  <div id="trip-body">
+  <button class="btn ghost back" onclick="go('trip')">← Когда что-то пошло не так</button>
+  <h1>Просьба о помощи</h1>
+  <div class="note why">Эти пять фраз — самые важные во всём разговорнике. Выучи их первыми: они превращают любую непонятную ситуацию в решаемую.</div>
+  <button class="btn primary block" onclick="addScene('help')">
+    Учить эти 5 фраз
+  </button>
+
+  <div class="sec-hd">Говоришь ты</div>
+  <div class="phrase ">
+    <div class="en"><span class="w " onclick="lookup('can',-1)">Can</span> <span class="w " onclick="lookup('you',-1)">you</span> <span class="w known" onclick="lookup('help',-1)">help</span> <span class="w " onclick="lookup('me',-1)">me</span>, <span class="w " onclick="lookup('please',-1)">please</span>?</div>
+    <div class="ru">Можете мне помочь?</div>
+    <div class="acts">
+      <button class="mini" onclick="showBig('Can you help me, please?','Можете мне помочь?')"><svg viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2.5"></rect><path d="M10 5.5h4"></path></svg> показать собеседнику</button>
+      <button class="mini" onclick="speak('Can you help me, please?',1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg> медленно</button>
+      <button class="mini" onclick="shareCard('phrase','Can you help me, please?','Можете мне помочь?')"><svg viewBox="0 0 24 24"><path d="M12 15V3"></path><path d="M8.5 6.5 12 3l3.5 3.5"></path><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"></path></svg> картинкой</button>
+      <button class="mini" onclick="addPhrase('p:help:0','Can you help me, please?','Можете мне помочь?')"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg> учить</button>
+    </div>
+  </div><div class="phrase ">
+    <div class="en"><span class="w " onclick="lookup('i',-1)">I</span> <span class="w " onclick="lookup('don't',-1)">don't</span> <span class="w " onclick="lookup('speak',-1)">speak</span> <span class="w " onclick="lookup('english',-1)">English</span> <span class="w " onclick="lookup('well',-1)">well</span>.</div>
+    <div class="ru">Я плохо говорю по-английски.</div>
+    <div class="acts">
+      <button class="mini" onclick="showBig('I don\'t speak English well.','Я плохо говорю по-английски.')"><svg viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2.5"></rect><path d="M10 5.5h4"></path></svg> показать собеседнику</button>
+      <button class="mini" onclick="speak('I don\'t speak English well.',1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg> медленно</button>
+      <button class="mini" onclick="shareCard('phrase','I don\'t speak English well.','Я плохо говорю по-английски.')"><svg viewBox="0 0 24 24"><path d="M12 15V3"></path><path d="M8.5 6.5 12 3l3.5 3.5"></path><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"></path></svg> картинкой</button>
+      <button class="mini" onclick="addPhrase('p:help:1','I don\'t speak English well.','Я плохо говорю по-английски.')"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg> учить</button>
+    </div>
+  </div><div class="phrase ">
+    <div class="en"><span class="w " onclick="lookup('could',-1)">Could</span> <span class="w " onclick="lookup('you',-1)">you</span> <span class="w known" onclick="lookup('write',-1)">write</span> <span class="w " onclick="lookup('it',-1)">it</span> <span class="w " onclick="lookup('down',-1)">down</span>?</div>
+    <div class="ru">Можете это написать?</div>
+    <div class="acts">
+      <button class="mini" onclick="showBig('Could you write it down?','Можете это написать?')"><svg viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2.5"></rect><path d="M10 5.5h4"></path></svg> показать собеседнику</button>
+      <button class="mini" onclick="speak('Could you write it down?',1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg> медленно</button>
+      <button class="mini" onclick="shareCard('phrase','Could you write it down?','Можете это написать?')"><svg viewBox="0 0 24 24"><path d="M12 15V3"></path><path d="M8.5 6.5 12 3l3.5 3.5"></path><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"></path></svg> картинкой</button>
+      <button class="mini" onclick="addPhrase('p:help:2','Could you write it down?','Можете это написать?')"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg> учить</button>
+    </div>
+  </div><div class="phrase ">
+    <div class="en"><span class="w " onclick="lookup('could',-1)">Could</span> <span class="w " onclick="lookup('you',-1)">you</span> <span class="w " onclick="lookup('speak',-1)">speak</span> <span class="w " onclick="lookup('more',-1)">more</span> <span class="w " onclick="lookup('slowly',-1)">slowly</span>?</div>
+    <div class="ru">Можете говорить помедленнее?</div>
+    <div class="acts">
+      <button class="mini" onclick="showBig('Could you speak more slowly?','Можете говорить помедленнее?')"><svg viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2.5"></rect><path d="M10 5.5h4"></path></svg> показать собеседнику</button>
+      <button class="mini" onclick="speak('Could you speak more slowly?',1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg> медленно</button>
+      <button class="mini" onclick="shareCard('phrase','Could you speak more slowly?','Можете говорить помедленнее?')"><svg viewBox="0 0 24 24"><path d="M12 15V3"></path><path d="M8.5 6.5 12 3l3.5 3.5"></path><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"></path></svg> картинкой</button>
+      <button class="mini" onclick="addPhrase('p:help:3','Could you speak more slowly?','Можете говорить помедленнее?')"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg> учить</button>
+    </div>
+  </div><div class="phrase ">
+    <div class="en"><span class="w " onclick="lookup('could',-1)">Could</span> <span class="w " onclick="lookup('you',-1)">you</span> <span class="w " onclick="lookup('repeat',-1)">repeat</span> <span class="w " onclick="lookup('that',-1)">that</span>, <span class="w " onclick="lookup('please',-1)">please</span>?</div>
+    <div class="ru">Можете повторить, пожалуйста?</div>
+    <div class="acts">
+      <button class="mini" onclick="showBig('Could you repeat that, please?','Можете повторить, пожалуйста?')"><svg viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2.5"></rect><path d="M10 5.5h4"></path></svg> показать собеседнику</button>
+      <button class="mini" onclick="speak('Could you repeat that, please?',1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg> медленно</button>
+      <button class="mini" onclick="shareCard('phrase','Could you repeat that, please?','Можете повторить, пожалуйста?')"><svg viewBox="0 0 24 24"><path d="M12 15V3"></path><path d="M8.5 6.5 12 3l3.5 3.5"></path><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"></path></svg> картинкой</button>
+      <button class="mini" onclick="addPhrase('p:help:4','Could you repeat that, please?','Можете повторить, пожалуйста?')"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg> учить</button>
+    </div>
+  </div>
+
+  <div class="sec-hd">Услышишь в ответ</div>
+  <p class="tiny" style="margin:var(--s2) 0 0">Эти реплики учить наизусть не надо — достаточно узнавать.</p>
+  <div class="phrase hear">
+    <div class="en"><span class="w " onclick="lookup('of',-1)">Of</span> <span class="w " onclick="lookup('course',-1)">course</span>.</div>
+    <div class="ru">Конечно.</div>
+    <div class="acts">
+      <button class="mini" onclick="showBig('Of course.','Конечно.')"><svg viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2.5"></rect><path d="M10 5.5h4"></path></svg> показать собеседнику</button>
+      <button class="mini" onclick="speak('Of course.',1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg> медленно</button>
+      <button class="mini" onclick="shareCard('phrase','Of course.','Конечно.')"><svg viewBox="0 0 24 24"><path d="M12 15V3"></path><path d="M8.5 6.5 12 3l3.5 3.5"></path><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"></path></svg> картинкой</button>
+      
+    </div>
+  </div><div class="phrase hear">
+    <div class="en"><span class="w known" onclick="lookup('let',-1)">Let</span> <span class="w " onclick="lookup('me',-1)">me</span> <span class="w known" onclick="lookup('write',-1)">write</span> <span class="w " onclick="lookup('it',-1)">it</span> <span class="w " onclick="lookup('for',-1)">for</span> <span class="w " onclick="lookup('you',-1)">you</span>.</div>
+    <div class="ru">Давайте я вам напишу.</div>
+    <div class="acts">
+      <button class="mini" onclick="showBig('Let me write it for you.','Давайте я вам напишу.')"><svg viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2.5"></rect><path d="M10 5.5h4"></path></svg> показать собеседнику</button>
+      <button class="mini" onclick="speak('Let me write it for you.',1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg> медленно</button>
+      <button class="mini" onclick="shareCard('phrase','Let me write it for you.','Давайте я вам напишу.')"><svg viewBox="0 0 24 24"><path d="M12 15V3"></path><path d="M8.5 6.5 12 3l3.5 3.5"></path><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"></path></svg> картинкой</button>
+      
+    </div>
+  </div><div class="phrase hear">
+    <div class="en"><span class="w " onclick="lookup('is',-1)">Is</span> <span class="w " onclick="lookup('everything',-1)">everything</span> <span class="w " onclick="lookup('okay',-1)">okay</span>?</div>
+    <div class="ru">Всё в порядке?</div>
+    <div class="acts">
+      <button class="mini" onclick="showBig('Is everything okay?','Всё в порядке?')"><svg viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2.5"></rect><path d="M10 5.5h4"></path></svg> показать собеседнику</button>
+      <button class="mini" onclick="speak('Is everything okay?',1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg> медленно</button>
+      <button class="mini" onclick="shareCard('phrase','Is everything okay?','Всё в порядке?')"><svg viewBox="0 0 24 24"><path d="M12 15V3"></path><path d="M8.5 6.5 12 3l3.5 3.5"></path><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"></path></svg> картинкой</button>
+      
+    </div>
+  </div>
+  <div style="height:var(--s6)"></div></div>
+</div><nav>
+  <button data-go="home" class="on"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V20h14V9.5"></path></svg>Дом</button>
+  <button data-go="cards" class=""><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="14" rx="2.5"></rect><path d="M7 3h11a3 3 0 0 1 3 3v11"></path></svg><span style="position:relative">Слова<i class="badge" id="nav-due" style="display: inline-block;">77</i></span></button>
+  <button data-go="trip" class=""><svg viewBox="0 0 24 24"><path d="M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"></path><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8"></path></svg>Фразы</button>
+  <button data-go="gram" class=""><svg viewBox="0 0 24 24"><path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"></path><path d="M8 8h6M8 12h6"></path></svg>Правила</button>
+  <button data-go="sound" class=""><svg viewBox="0 0 24 24"><path d="M4 15V9h4l5-4v14l-5-4z"></path><path d="M17 9.5a4 4 0 0 1 0 5"></path></svg>Звуки</button>
+  <button data-go="read" class=""><svg viewBox="0 0 24 24"><path d="M12 6.5C10 5 7.5 4.5 4 5v13c3.5-.5 6 0 8 1.5 2-1.5 4.5-2 8-1.5V5c-3.5-.5-6 0-8 1.5z"></path><path d="M12 6.5v13"></path></svg>Тексты</button>
+</nav></div></div></figure>
+<figure><figcaption>Разговорник · список</figcaption>
+  <div class="phone"><div class="view app"><div class="wrap">
+  <div id="trip-body"><h1>Разговорник</h1>
+    <p class="lead">27 сценариев и 126 фраз. Этого хватает на обычную поездку.</p>
+    <div class="row" style="justify-content:space-between;margin-bottom:var(--s2)">
+      <span class="tiny">Взято в работу</span><span class="tiny num">0 из 126</span>
+    </div>
+    <div class="bar"><i style="width:0%"></i></div>
+    <p class="tiny" style="margin-top:var(--s3)">Начни со сцены «Просьба о помощи» — эти пять фраз выручают в любой непонятной ситуации.</p>
+    
+      <h2>Дорога и транспорт</h2>
+      <p class="tiny" style="margin:calc(var(--s2) * -1) 0 var(--s3)">Аэропорт, границы, такси, билеты, «как пройти».</p>
+      <div class="list"><button class="list-item" onclick="go('trip','checkin')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Регистрация на рейс</span><span class="sub">5 фраз · в ответ 5</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','border')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Паспортный контроль</span><span class="sub">5 фраз · в ответ 4</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','lost-bag')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Багаж не приехал</span><span class="sub">5 фраз · в ответ 4</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','taxi')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Такси</span><span class="sub">5 фраз · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','transit')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Метро, автобус, билеты</span><span class="sub">5 фраз · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','train')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Поезд</span><span class="sub">4 фразы · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','directions')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Как пройти</span><span class="sub">4 фразы · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button></div>
+      <h2>Жильё</h2>
+      <p class="tiny" style="margin:calc(var(--s2) * -1) 0 var(--s3)">Заселение, проблемы в номере, выезд.</p>
+      <div class="list"><button class="list-item" onclick="go('trip','hotel-in')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Заселение в отель</span><span class="sub">5 фраз · в ответ 4</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','hotel-problem')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Проблема в номере</span><span class="sub">5 фраз · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','hotel-out')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Выезд и багаж</span><span class="sub">4 фразы · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button></div>
+      <h2>Еда</h2>
+      <p class="tiny" style="margin:calc(var(--s2) * -1) 0 var(--s3)">Кафе, заказ, аллергии, счёт.</p>
+      <div class="list"><button class="list-item" onclick="go('trip','table')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Кафе: столик</span><span class="sub">4 фразы · в ответ 4</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','order')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Заказ</span><span class="sub">5 фраз · в ответ 4</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','allergy')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Аллергии и ограничения</span><span class="sub">5 фраз · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','bill')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Счёт</span><span class="sub">5 фраз · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button></div>
+      <h2>Магазины и деньги</h2>
+      <p class="tiny" style="margin:calc(var(--s2) * -1) 0 var(--s3)">Покупки, размеры, оплата, возврат.</p>
+      <div class="list"><button class="list-item" onclick="go('trip','find')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Найти товар</span><span class="sub">4 фразы · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','size')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Размер и примерка</span><span class="sub">5 фраз · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','pay')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Оплата</span><span class="sub">4 фразы · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','return')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Возврат и обмен</span><span class="sub">4 фразы · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button></div>
+      <h2>Когда что-то пошло не так</h2>
+      <p class="tiny" style="margin:calc(var(--s2) * -1) 0 var(--s3)">Аптека, врач, потери, отмены, просьба о помощи.</p>
+      <div class="list"><button class="list-item" onclick="go('trip','help')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Просьба о помощи</span><span class="sub">5 фраз · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','pharmacy')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Аптека</span><span class="sub">5 фраз · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','doctor')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Врач</span><span class="sub">5 фраз · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','lost')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Потеря и кража</span><span class="sub">4 фразы · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','delay')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Опоздание и отмена</span><span class="sub">4 фразы · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button></div>
+      <h2>Быт и общение</h2>
+      <p class="tiny" style="margin:calc(var(--s2) * -1) 0 var(--s3)">Вежливость, знакомство, связь, числа.</p>
+      <div class="list"><button class="list-item" onclick="go('trip','polite')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Вежливость</span><span class="sub">5 фраз · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','meet')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Знакомство</span><span class="sub">5 фраз · в ответ 4</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','wifi')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Интернет и связь</span><span class="sub">5 фраз · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button><button class="list-item" onclick="go('trip','numbers')">
+          <span class="dot "></span>
+          <span style="flex:1"><span class="ttl">Время, числа, деньги</span><span class="sub">5 фраз · в ответ 3</span></span>
+          <span class="chev">›</span>
+        </button></div>
+    <div style="height:var(--s6)"></div></div>
+</div><nav>
+  <button data-go="home" class="on"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V20h14V9.5"></path></svg>Дом</button>
+  <button data-go="cards" class=""><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="14" rx="2.5"></rect><path d="M7 3h11a3 3 0 0 1 3 3v11"></path></svg><span style="position:relative">Слова<i class="badge" id="nav-due" style="display: inline-block;">77</i></span></button>
+  <button data-go="trip" class=""><svg viewBox="0 0 24 24"><path d="M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"></path><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8"></path></svg>Фразы</button>
+  <button data-go="gram" class=""><svg viewBox="0 0 24 24"><path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"></path><path d="M8 8h6M8 12h6"></path></svg>Правила</button>
+  <button data-go="sound" class=""><svg viewBox="0 0 24 24"><path d="M4 15V9h4l5-4v14l-5-4z"></path><path d="M17 9.5a4 4 0 0 1 0 5"></path></svg>Звуки</button>
+  <button data-go="read" class=""><svg viewBox="0 0 24 24"><path d="M12 6.5C10 5 7.5 4.5 4 5v13c3.5-.5 6 0 8 1.5 2-1.5 4.5-2 8-1.5V5c-3.5-.5-6 0-8 1.5z"></path><path d="M12 6.5v13"></path></svg>Тексты</button>
+</nav></div></div></figure>
+<figure><figcaption>Грамматика · артикли</figcaption>
+  <div class="phone"><div class="view app"><div class="wrap">
+  <div id="gram-body">
+  <button class="btn ghost back" onclick="go('gram')">← все темы</button>
+  <h1>Артикли a / the</h1>
+  <p class="lead">Единственная тема, которой нет в русском вообще</p>
+  <p style="font-size:1.06rem; font-weight:500; line-height:1.5">Артикль отвечает на вопрос: слушатель уже знает, о каком именно предмете речь?</p>
+
+  <h2>Почему так</h2>
+  <div class="note why">В русском мы передаём эту информацию порядком слов и интонацией: «В комнату вошла <u>женщина</u>» (новая, впервые) против «<u>Женщина</u> вошла в комнату» (та самая, известная). Английский порядок слов жёсткий, ему нужен отдельный маркер — им и стал артикль.<br><br><b>a/an</b> = «один из многих, ты его пока не знаешь».<br><b>the</b> = «тот самый, мы оба понимаем какой».<br><b>без артикля</b> = про категорию вообще или про неисчисляемое.</div>
+
+  <h2>Сравни</h2>
+  <div class="pair"><div class="no">I need <b>a</b> doctor.</div><div class="yes">Мне нужен какой-нибудь врач.</div></div><div class="pair"><div class="no">I need <b>the</b> doctor.</div><div class="yes">Мне нужен тот самый врач.</div></div>
+  <p class="tiny" style="margin-top:var(--s3)">Первую фразу говорят, когда стало плохо. Вторую — когда врач уже есть, и он нужен именно этот.</p>
+
+  <h2>Где ошибаются</h2>
+  <div class="note trap"><b>Ловушка. </b>Самая частая ошибка русских — пропускать артикль вообще. Для англоговорящего <s>I bought car</s> звучит примерно как «я купила автомобиль-в-принципе». Правило-костыль на первое время: перед исчисляемым существительным в единственном числе <b>всегда</b> что-то стоит — a, the, my, this, one. Голым оно не бывает.</div>
+
+  <h2>Примеры</h2>
+  <div class="exline">
+      <div>I saw a cat. The cat was black. <button class="speak" style="padding:3px 9px;font-size:.7rem;min-height:0;vertical-align:middle" onclick="speak(&quot;I saw a cat. The cat was black.&quot;,1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg></button></div>
+      <div class="tiny">Я видела кошку. Кошка была чёрная.</div></div><div class="exline">
+      <div>Close the door, please. <button class="speak" style="padding:3px 9px;font-size:.7rem;min-height:0;vertical-align:middle" onclick="speak(&quot;Close the door, please.&quot;,1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg></button></div>
+      <div class="tiny">Закрой дверь, пожалуйста. (мы оба знаем какую)</div></div><div class="exline">
+      <div>I love music. <button class="speak" style="padding:3px 9px;font-size:.7rem;min-height:0;vertical-align:middle" onclick="speak(&quot;I love music.&quot;,1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg></button></div>
+      <div class="tiny">Я люблю музыку. (вообще, как явление)</div></div><div class="exline">
+      <div>She is a teacher. <button class="speak" style="padding:3px 9px;font-size:.7rem;min-height:0;vertical-align:middle" onclick="speak(&quot;She is a teacher.&quot;,1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg></button></div>
+      <div class="tiny">Она учительница. (одна из)</div></div>
+
+  <h2>Проверь себя</h2>
+  <div id="quiz"><div class="card">
+    <div class="tiny" style="margin-bottom:var(--s2)">Вопрос 1 из 3</div>
+    <p style="font-weight:500; font-size:1.03rem">«Я купила книгу» (какую-то, впервые упоминаю):</p>
+    <button class="opt " onclick="pickAnswer(0)">I bought book</button><button class="opt " onclick="pickAnswer(1)">I bought a book</button><button class="opt " onclick="pickAnswer(2)">I bought the book</button>
+    
+  </div></div>
+  <div style="height:var(--s6)"></div></div>
+</div><nav>
+  <button data-go="home" class="on"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V20h14V9.5"></path></svg>Дом</button>
+  <button data-go="cards" class=""><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="14" rx="2.5"></rect><path d="M7 3h11a3 3 0 0 1 3 3v11"></path></svg><span style="position:relative">Слова<i class="badge" id="nav-due" style="display: inline-block;">77</i></span></button>
+  <button data-go="trip" class=""><svg viewBox="0 0 24 24"><path d="M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"></path><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8"></path></svg>Фразы</button>
+  <button data-go="gram" class=""><svg viewBox="0 0 24 24"><path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"></path><path d="M8 8h6M8 12h6"></path></svg>Правила</button>
+  <button data-go="sound" class=""><svg viewBox="0 0 24 24"><path d="M4 15V9h4l5-4v14l-5-4z"></path><path d="M17 9.5a4 4 0 0 1 0 5"></path></svg>Звуки</button>
+  <button data-go="read" class=""><svg viewBox="0 0 24 24"><path d="M12 6.5C10 5 7.5 4.5 4 5v13c3.5-.5 6 0 8 1.5 2-1.5 4.5-2 8-1.5V5c-3.5-.5-6 0-8 1.5z"></path><path d="M12 6.5v13"></path></svg>Тексты</button>
+</nav></div></div></figure>
+<figure><figcaption>Звук θ</figcaption>
+  <div class="phone"><div class="view app"><div class="wrap">
+  <div id="sound-body">
+  <button class="btn ghost back" onclick="go('sound')">← все звуки</button>
+  <div class="sound-hd"><span class="sym">θ</span><h1 style="margin:0">глухой th</h1></div>
+  <p class="lead">think, three, month, health, both</p>
+
+  <h2>Что делает язык</h2>
+  <div class="card" style="padding:var(--s4)"><svg class="mouth" viewBox="0 0 300 218" role="img" aria-label="Положение языка, разрез сбоку">
+  
+<path class="head" d="M150 6 C104 8 72 24 64 46 L54 58 L18 92 L50 101
+  C42 106 40 114 48 118 L56 124 C44 130 42 140 52 145
+  C60 156 52 168 55 176 C63 190 94 202 128 207
+  C188 216 246 198 266 156 C286 112 276 36 150 6 Z"></path>
+<path class="nasal" d="M34 90 C78 71 140 69 180 81 C194 86 200 97 197 109
+  C190 97 170 91 150 89 C110 85 70 92 42 100 Z"></path>
+<path class="cav" d="M57 110 C82 100 124 95 156 97 C180 99 194 108 197 126
+  C205 146 209 170 208 200 L186 201 C184 180 174 170 154 164 C122 154 86 150 57 148 Z"></path>
+<clipPath id="oral"><path d="M57 110 C82 100 124 95 156 97 C180 99 194 108 197 126
+  C205 146 209 170 208 200 L186 201 C184 180 174 170 154 164 C122 154 86 150 57 148 Z"></path></clipPath>
+<text class="lbl" x="94" y="82">нос</text>
+<text class="lbl" x="216" y="176">глотка</text><g clip-path="url(#oral)"><path class="tongue" d="M52 126 C80 129 118 138 148 150 C172 160 190 178 198 205 L214 240 L46 240 Z"></path></g><path class="tongue" d="M66 116 C42 113 26 118 26 126 C26 134 42 139 66 136 Z"></path><path class="teeth" d="M56 109 L74 107 L72 122 L58 123 Z"></path><path class="teeth" d="M57 148 L75 149 L73 132 L59 132 Z"></path><path class="air" d="M34 108 L10 96"></path></svg>
+    <p class="tiny" style="text-align:center;margin:var(--s2) 0 0">Разрез сбоку, лицом влево. Белое — полость рта, цветное — язык.</p>
+  </div>
+
+  <h2>Как это выглядит снаружи</h2>
+  <div class="card" style="padding:var(--s4)"><svg class="mouth" viewBox="0 0 220 150" role="img" aria-label="Рот спереди">
+  <path class="lipsF" d="M10 72 C36 52 74 42 98 56 C104 60 116 60 122 56 C146 42 184 52 210 72 C184 98 148 112 110 112 C72 112 36 98 10 72 Z"></path><ellipse class="gap" cx="110" cy="72" rx="44" ry="9"></ellipse><path class="thF" d="M75.68 64 H144.32 V71.1 H75.68 Z"></path><path class="tgF" d="M84 80 Q110 54 136 80 Z"></path></svg>
+    <p class="tiny" style="margin:var(--s3) 0 0">Самый заметный английский звук снаружи: кончик языка виден между зубами. Если ты видишь язык — это th. В русском такого нет ни в одном звуке, поэтому спутать не с чем.</p>
+  </div>
+
+  <h2>Как произнести</h2>
+  <div class="step"><i>1</i><span>Кончик языка положи между зубами — слегка, чтобы он был виден.</span></div><div class="step"><i>2</i><span>Голос не включай. Просто выдувай воздух в щель между языком и верхними зубами.</span></div><div class="step"><i>3</i><span>Получается длинный шипящий выдох, похожий на «с», но глуше и мягче.</span></div>
+
+  <div class="note trap"><b>Ловушка. </b>Русский мозг подменяет θ на «с» (sink вместо think) или на «ф» (free вместо three). Оба варианта носитель слышит как ошибку. Контроль без слуха: проверь пальцем — язык должен касаться его между зубами.</div>
+
+  <h2>Минимальные пары</h2>
+  <p class="tiny" style="margin-top:calc(var(--s3) * -1)">Слова, которые отличаются только этим звуком. Читай их парами перед зеркалом — картинка рта должна отличаться.</p>
+  <div class="minpair">
+      <span style="flex:1;font-weight:500">think</span>
+      <span style="color:var(--ink-3)">—</span>
+      <span style="flex:1;text-align:right;color:var(--ink-2)">sink</span>
+      <button class="speak" style="padding:4px 10px;flex:none;min-height:0" onclick="speak('think, sink',1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg></button>
+    </div><div class="minpair">
+      <span style="flex:1;font-weight:500">three</span>
+      <span style="color:var(--ink-3)">—</span>
+      <span style="flex:1;text-align:right;color:var(--ink-2)">free</span>
+      <button class="speak" style="padding:4px 10px;flex:none;min-height:0" onclick="speak('three, free',1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg></button>
+    </div><div class="minpair">
+      <span style="flex:1;font-weight:500">mouth</span>
+      <span style="color:var(--ink-3)">—</span>
+      <span style="flex:1;text-align:right;color:var(--ink-2)">mouse</span>
+      <button class="speak" style="padding:4px 10px;flex:none;min-height:0" onclick="speak('mouth, mouse',1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg></button>
+    </div><div class="minpair">
+      <span style="flex:1;font-weight:500">thin</span>
+      <span style="color:var(--ink-3)">—</span>
+      <span style="flex:1;text-align:right;color:var(--ink-2)">fin</span>
+      <button class="speak" style="padding:4px 10px;flex:none;min-height:0" onclick="speak('thin, fin',1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg></button>
+    </div>
+  <div style="height:var(--s6)"></div></div>
+</div><nav>
+  <button data-go="home" class="on"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V20h14V9.5"></path></svg>Дом</button>
+  <button data-go="cards" class=""><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="14" rx="2.5"></rect><path d="M7 3h11a3 3 0 0 1 3 3v11"></path></svg><span style="position:relative">Слова<i class="badge" id="nav-due" style="display: inline-block;">77</i></span></button>
+  <button data-go="trip" class=""><svg viewBox="0 0 24 24"><path d="M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"></path><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8"></path></svg>Фразы</button>
+  <button data-go="gram" class=""><svg viewBox="0 0 24 24"><path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"></path><path d="M8 8h6M8 12h6"></path></svg>Правила</button>
+  <button data-go="sound" class=""><svg viewBox="0 0 24 24"><path d="M4 15V9h4l5-4v14l-5-4z"></path><path d="M17 9.5a4 4 0 0 1 0 5"></path></svg>Звуки</button>
+  <button data-go="read" class=""><svg viewBox="0 0 24 24"><path d="M12 6.5C10 5 7.5 4.5 4 5v13c3.5-.5 6 0 8 1.5 2-1.5 4.5-2 8-1.5V5c-3.5-.5-6 0-8 1.5z"></path><path d="M12 6.5v13"></path></svg>Тексты</button>
+</nav></div></div></figure>
+<figure><figcaption>Чтение</figcaption>
+  <div class="phone"><div class="view app"><div class="wrap">
+  <div id="read-body">
+  <button class="btn ghost back" onclick="go('read')">← все тексты</button>
+  <h1>Why adults fail at languages</h1>
+  <p class="lead">A2 · Почему взрослые «не выучивают» язык — и почему дело не в способностях.</p>
+  <p class="tiny" style="margin-top:calc(var(--s3) * -1)">Из 65 разных слов текста ты уже знаешь 51%. Точками подчёркнуты слова, которые можно тапнуть.</p>
+  <div class="row wrap-r" style="margin-bottom:var(--s5)">
+    <button class="mini" onclick="toggleRu(0)">Скрыть перевод</button>
+    <button class="mini" onclick="speak(&quot;Most adults believe they are bad at languages. This is almost never true. The real problem is time, not talent. A child hears the language for thousands of hours before saying a word. An adult gets one hour a week with a teacher and then feels stupid. The teacher is not the problem either. The problem is the six days between the lessons, when nothing happens. Small and regular always beats long and rare. Ten minutes today are worth more than three hours next Sunday.&quot;,1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg> медленно</button>
+  </div>
+  <div class="text-body">
+    <div style="margin-bottom:var(--s4)">
+      <span class="w " onclick="lookup('most',0)">Most</span> <span class="w " onclick="lookup('adults',0)">adults</span> <span class="w known" onclick="lookup('believe',0)">believe</span> <span class="w " onclick="lookup('they',0)">they</span> <span class="w " onclick="lookup('are',0)">are</span> <span class="w " onclick="lookup('bad',0)">bad</span> <span class="w " onclick="lookup('at',0)">at</span> <span class="w " onclick="lookup('languages',0)">languages</span>.
+      <div class="tiny" style="margin-top:2px">Большинство взрослых считают, что у них нет способностей к языкам.</div>
+    </div><div style="margin-bottom:var(--s4)">
+      <span class="w " onclick="lookup('this',0)">This</span> <span class="w " onclick="lookup('is',0)">is</span> <span class="w " onclick="lookup('almost',0)">almost</span> <span class="w " onclick="lookup('never',0)">never</span> <span class="w " onclick="lookup('true',0)">true</span>.
+      <div class="tiny" style="margin-top:2px">Это почти никогда не правда.</div>
+    </div><div style="margin-bottom:var(--s4)">
+      <span class="w " onclick="lookup('the',0)">The</span> <span class="w " onclick="lookup('real',0)">real</span> <span class="w known" onclick="lookup('problem',0)">problem</span> <span class="w " onclick="lookup('is',0)">is</span> <span class="w known" onclick="lookup('time',0)">time</span>, <span class="w " onclick="lookup('not',0)">not</span> <span class="w " onclick="lookup('talent',0)">talent</span>.
+      <div class="tiny" style="margin-top:2px">Настоящая проблема — время, а не талант.</div>
+    </div><div style="margin-bottom:var(--s4)">
+      <span class="w " onclick="lookup('a',0)">A</span> <span class="w known" onclick="lookup('child',0)">child</span> <span class="w known" onclick="lookup('hears',0)">hears</span> <span class="w " onclick="lookup('the',0)">the</span> <span class="w " onclick="lookup('language',0)">language</span> <span class="w " onclick="lookup('for',0)">for</span> <span class="w " onclick="lookup('thousands',0)">thousands</span> <span class="w " onclick="lookup('of',0)">of</span> <span class="w " onclick="lookup('hours',0)">hours</span> <span class="w " onclick="lookup('before',0)">before</span> <span class="w known" onclick="lookup('saying',0)">saying</span> <span class="w " onclick="lookup('a',0)">a</span> <span class="w " onclick="lookup('word',0)">word</span>.
+      <div class="tiny" style="margin-top:2px">Ребёнок слышит язык тысячи часов, прежде чем сказать хоть слово.</div>
+    </div><div style="margin-bottom:var(--s4)">
+      <span class="w " onclick="lookup('an',0)">An</span> <span class="w " onclick="lookup('adult',0)">adult</span> <span class="w known" onclick="lookup('gets',0)">gets</span> <span class="w " onclick="lookup('one',0)">one</span> <span class="w " onclick="lookup('hour',0)">hour</span> <span class="w " onclick="lookup('a',0)">a</span> <span class="w known" onclick="lookup('week',0)">week</span> <span class="w " onclick="lookup('with',0)">with</span> <span class="w " onclick="lookup('a',0)">a</span> <span class="w " onclick="lookup('teacher',0)">teacher</span> <span class="w " onclick="lookup('and',0)">and</span> <span class="w " onclick="lookup('then',0)">then</span> <span class="w known" onclick="lookup('feels',0)">feels</span> <span class="w " onclick="lookup('stupid',0)">stupid</span>.
+      <div class="tiny" style="margin-top:2px">Взрослый получает час в неделю с преподавателем, а потом чувствует себя глупым.</div>
+    </div><div style="margin-bottom:var(--s4)">
+      <span class="w " onclick="lookup('the',0)">The</span> <span class="w " onclick="lookup('teacher',0)">teacher</span> <span class="w " onclick="lookup('is',0)">is</span> <span class="w " onclick="lookup('not',0)">not</span> <span class="w " onclick="lookup('the',0)">the</span> <span class="w known" onclick="lookup('problem',0)">problem</span> <span class="w " onclick="lookup('either',0)">either</span>.
+      <div class="tiny" style="margin-top:2px">Преподаватель тоже не проблема.</div>
+    </div><div style="margin-bottom:var(--s4)">
+      <span class="w " onclick="lookup('the',0)">The</span> <span class="w known" onclick="lookup('problem',0)">problem</span> <span class="w " onclick="lookup('is',0)">is</span> <span class="w " onclick="lookup('the',0)">the</span> <span class="w " onclick="lookup('six',0)">six</span> <span class="w known" onclick="lookup('days',0)">days</span> <span class="w " onclick="lookup('between',0)">between</span> <span class="w " onclick="lookup('the',0)">the</span> <span class="w " onclick="lookup('lessons',0)">lessons</span>, <span class="w " onclick="lookup('when',0)">when</span> <span class="w " onclick="lookup('nothing',0)">nothing</span> <span class="w " onclick="lookup('happens',0)">happens</span>.
+      <div class="tiny" style="margin-top:2px">Проблема — шесть дней между занятиями, когда ничего не происходит.</div>
+    </div><div style="margin-bottom:var(--s4)">
+      <span class="w " onclick="lookup('small',0)">Small</span> <span class="w " onclick="lookup('and',0)">and</span> <span class="w " onclick="lookup('regular',0)">regular</span> <span class="w " onclick="lookup('always',0)">always</span> <span class="w " onclick="lookup('beats',0)">beats</span> <span class="w " onclick="lookup('long',0)">long</span> <span class="w " onclick="lookup('and',0)">and</span> <span class="w " onclick="lookup('rare',0)">rare</span>.
+      <div class="tiny" style="margin-top:2px">Мало и регулярно всегда побеждает много и редко.</div>
+    </div><div style="margin-bottom:var(--s4)">
+      <span class="w " onclick="lookup('ten',0)">Ten</span> <span class="w " onclick="lookup('minutes',0)">minutes</span> <span class="w " onclick="lookup('today',0)">today</span> <span class="w " onclick="lookup('are',0)">are</span> <span class="w " onclick="lookup('worth',0)">worth</span> <span class="w " onclick="lookup('more',0)">more</span> <span class="w " onclick="lookup('than',0)">than</span> <span class="w " onclick="lookup('three',0)">three</span> <span class="w " onclick="lookup('hours',0)">hours</span> <span class="w " onclick="lookup('next',0)">next</span> <span class="w " onclick="lookup('sunday',0)">Sunday</span>.
+      <div class="tiny" style="margin-top:2px">Десять минут сегодня стоят больше, чем три часа в следующее воскресенье.</div>
+    </div>
+  </div>
+  <button class="btn  block" style="margin-top:var(--s5)" onclick="markRead(0)">
+    Прочитано ✓
+  </button>
+  <div style="height:var(--s6)"></div></div>
+</div><nav>
+  <button data-go="home" class="on"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V20h14V9.5"></path></svg>Дом</button>
+  <button data-go="cards" class=""><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="14" rx="2.5"></rect><path d="M7 3h11a3 3 0 0 1 3 3v11"></path></svg><span style="position:relative">Слова<i class="badge" id="nav-due" style="display: inline-block;">77</i></span></button>
+  <button data-go="trip" class=""><svg viewBox="0 0 24 24"><path d="M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"></path><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8"></path></svg>Фразы</button>
+  <button data-go="gram" class=""><svg viewBox="0 0 24 24"><path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"></path><path d="M8 8h6M8 12h6"></path></svg>Правила</button>
+  <button data-go="sound" class=""><svg viewBox="0 0 24 24"><path d="M4 15V9h4l5-4v14l-5-4z"></path><path d="M17 9.5a4 4 0 0 1 0 5"></path></svg>Звуки</button>
+  <button data-go="read" class=""><svg viewBox="0 0 24 24"><path d="M12 6.5C10 5 7.5 4.5 4 5v13c3.5-.5 6 0 8 1.5 2-1.5 4.5-2 8-1.5V5c-3.5-.5-6 0-8 1.5z"></path><path d="M12 6.5v13"></path></svg>Тексты</button>
+</nav></div></div></figure>
+<figure><figcaption>Вписать слово</figcaption>
+  <div class="phone"><div class="view app"><div class="wrap">
+  <div id="cards-body">
+  <div class="row" style="margin-bottom:var(--s2)">
+    <button class="btn ghost" onclick="go('home')">← выйти</button>
+    <div class="spacer"></div>
+    <span class="tiny num">0 / 57 · впиши слово</span>
+  </div>
+  <div class="bar" style="margin-bottom:var(--s5)"><i style="width:0%"></i></div>
+
+  <div class="face" style="min-height:auto; text-align:left; padding:var(--s6) var(--s5)">
+    <div class="ask" style="text-align:left">впиши пропущенное слово</div>
+    <div class="cloze-en">A glass of _____.</div>
+    <div class="cloze-ru">Стакан воды.</div>
+    <div class="cloze-hint">вода</div>
+
+    
+      <input id="cloze-in" class="cloze-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" placeholder="напиши слово" onkeydown="if(event.key==='Enter')checkCloze('water')">
+      <div class="row" style="margin-top:var(--s4)">
+        <button class="btn primary" style="flex:1" onclick="checkCloze('water')">Проверить</button>
+        <button class="btn" onclick="checkCloze('water',true)">Не помню</button>
+      </div>
+    
+  </div>
+
+  </div>
+</div><nav>
+  <button data-go="home" class="on"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V20h14V9.5"></path></svg>Дом</button>
+  <button data-go="cards" class=""><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="14" rx="2.5"></rect><path d="M7 3h11a3 3 0 0 1 3 3v11"></path></svg><span style="position:relative">Слова<i class="badge" id="nav-due" style="display: inline-block;">77</i></span></button>
+  <button data-go="trip" class=""><svg viewBox="0 0 24 24"><path d="M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"></path><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8"></path></svg>Фразы</button>
+  <button data-go="gram" class=""><svg viewBox="0 0 24 24"><path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"></path><path d="M8 8h6M8 12h6"></path></svg>Правила</button>
+  <button data-go="sound" class=""><svg viewBox="0 0 24 24"><path d="M4 15V9h4l5-4v14l-5-4z"></path><path d="M17 9.5a4 4 0 0 1 0 5"></path></svg>Звуки</button>
+  <button data-go="read" class=""><svg viewBox="0 0 24 24"><path d="M12 6.5C10 5 7.5 4.5 4 5v13c3.5-.5 6 0 8 1.5 2-1.5 4.5-2 8-1.5V5c-3.5-.5-6 0-8 1.5z"></path><path d="M12 6.5v13"></path></svg>Тексты</button>
+</nav></div></div></figure>
+<figure><figcaption>Путь</figcaption>
+  <div class="phone"><div class="view app"><div class="wrap">
+  <div id="home-body">
+  <button class="btn ghost back" onclick="go('home')">← на главную</button>
+  <h1>Путь</h1>
+  <p class="lead">Порядок, в котором стоит идти. Он не обязательный — но если непонятно, за что браться, берись за ближайший невыполненный шаг.</p>
+  <div class="row" style="justify-content:space-between;margin-bottom:var(--s2)">
+    <span class="tiny">Пройдено шагов</span><span class="tiny num">1 из 9</span>
+  </div>
+  <div class="bar" style="margin-bottom:var(--s6)"><i style="width:11%"></i></div>
+
+  <div class="path">
+    
+      <div class="pstep  now">
+        <div class="pmark">1</div>
+        <div class="pbody">
+          <div class="ptitle">Пять фраз-выручалок<span class="pnow">вы здесь</span></div>
+          <p class="tiny" style="margin:var(--s2) 0">Они превращают любую непонятную ситуацию в решаемую: попросить помощь, попросить написать, попросить говорить медленнее. С них начинают, потому что они снимают страх.</p>
+          <div class="pgoal">Взять сцену «Просьба о помощи» в карточки</div>
+          <button class="btn primary" style="margin-top:var(--s3);min-height:44px;padding:var(--s2) var(--s4);font-size:.9rem" onclick="go('trip','help')">Перейти</button>
+        </div>
+      </div>
+      <div class="pstep done ">
+        <div class="pmark">✓</div>
+        <div class="pbody">
+          <div class="ptitle">Первые 60 глаголов</div>
+          <p class="tiny" style="margin:var(--s2) 0">Половина всей английской речи держится на нескольких десятках глаголов. Пока их нет, любая фраза упирается в потолок.</p>
+          <div class="pgoal">Выучить хотя бы 30 слов из первой колоды · <b>60 из 60</b></div>
+          
+        </div>
+      </div>
+      <div class="pstep  ">
+        <div class="pmark">3</div>
+        <div class="pbody">
+          <div class="ptitle">Как собирается предложение</div>
+          <p class="tiny" style="margin:var(--s2) 0">В английском порядок слов заменяет падежи, а глагол-связка обязателен. Без этих двух правил слова остаются кучей, а не фразой.</p>
+          <div class="pgoal">Разобрать темы «Порядок слов» и «Глагол to be»</div>
+          <button class="btn " style="margin-top:var(--s3);min-height:44px;padding:var(--s2) var(--s4);font-size:.9rem" onclick="go('gram',0)">Перейти</button>
+        </div>
+      </div>
+      <div class="pstep  ">
+        <div class="pmark">4</div>
+        <div class="pbody">
+          <div class="ptitle">Существительные и артикли</div>
+          <p class="tiny" style="margin:var(--s2) 0">Артикли — единственное, чего в русском нет вообще. Разобравшись с ними рано, ты избавляешься от самой заметной ошибки.</p>
+          <div class="pgoal">50 существительных и тема «Артикли a / the»</div>
+          <button class="btn " style="margin-top:var(--s3);min-height:44px;padding:var(--s2) var(--s4);font-size:.9rem" onclick="go('gram',2)">Перейти</button>
+        </div>
+      </div>
+      <div class="pstep  ">
+        <div class="pmark">5</div>
+        <div class="pbody">
+          <div class="ptitle">Настоящее время и вопросы</div>
+          <p class="tiny" style="margin:var(--s2) 0">Этого хватает, чтобы говорить о себе и спрашивать других — то есть вести разговор, а не только понимать.</p>
+          <div class="pgoal">Темы «Present Simple» и «Вопросы и do»</div>
+          <button class="btn " style="margin-top:var(--s3);min-height:44px;padding:var(--s2) var(--s4);font-size:.9rem" onclick="go('gram',3)">Перейти</button>
+        </div>
+      </div>
+      <div class="pstep  ">
+        <div class="pmark">6</div>
+        <div class="pbody">
+          <div class="ptitle">Формы глаголов</div>
+          <p class="tiny" style="margin:var(--s2) 0">Слово выучено, но во фразу не встаёт, пока не знаешь его вторую и третью форму. Это шаг, после которого появляется прошедшее время.</p>
+          <div class="pgoal">Разобрать хотя бы одну группу неправильных глаголов</div>
+          <button class="btn " style="margin-top:var(--s3);min-height:44px;padding:var(--s2) var(--s4);font-size:.9rem" onclick="go('gram','verbs')">Перейти</button>
+        </div>
+      </div>
+      <div class="pstep  ">
+        <div class="pmark">7</div>
+        <div class="pbody">
+          <div class="ptitle">Прошедшее время</div>
+          <p class="tiny" style="margin:var(--s2) 0">Рассказать, что было вчера или в поездке, — самая частая бытовая задача после «представиться».</p>
+          <div class="pgoal">Темы «Past Simple» и «Present Perfect»</div>
+          <button class="btn " style="margin-top:var(--s3);min-height:44px;padding:var(--s2) var(--s4);font-size:.9rem" onclick="go('gram',5)">Перейти</button>
+        </div>
+      </div>
+      <div class="pstep  ">
+        <div class="pmark">8</div>
+        <div class="pbody">
+          <div class="ptitle">Разговорник под поездку</div>
+          <p class="tiny" style="margin:var(--s2) 0">Туристический английский — замкнутый набор ситуаций. Их можно закрыть целиком, в отличие от «языка вообще».</p>
+          <div class="pgoal">Взять в работу хотя бы три сцены · <b>0 из 27</b></div>
+          <button class="btn " style="margin-top:var(--s3);min-height:44px;padding:var(--s2) var(--s4);font-size:.9rem" onclick="go('trip')">Перейти</button>
+        </div>
+      </div>
+      <div class="pstep  ">
+        <div class="pmark">9</div>
+        <div class="pbody">
+          <div class="ptitle">Чтение каждый день</div>
+          <p class="tiny" style="margin:var(--s2) 0">Дальше язык растёт сам — от объёма прочитанного. Это то место, где обучение перестаёт быть занятиями и становится привычкой.</p>
+          <div class="pgoal">Прочитать два текста · <b>1 из 12</b></div>
+          <button class="btn " style="margin-top:var(--s3);min-height:44px;padding:var(--s2) var(--s4);font-size:.9rem" onclick="go('read')">Перейти</button>
+        </div>
+      </div>
+  </div>
+  <p class="tiny" style="margin-top:var(--s6)">Шаги отмечаются сами, по мере того как ты занимаешься. Ничего нажимать не нужно.</p>
+  <div style="height:var(--s6)"></div></div>
+</div><nav>
+  <button data-go="home" class="on"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V20h14V9.5"></path></svg>Дом</button>
+  <button data-go="cards" class=""><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="14" rx="2.5"></rect><path d="M7 3h11a3 3 0 0 1 3 3v11"></path></svg><span style="position:relative">Слова<i class="badge" id="nav-due" style="display: inline-block;">77</i></span></button>
+  <button data-go="trip" class=""><svg viewBox="0 0 24 24"><path d="M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"></path><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8"></path></svg>Фразы</button>
+  <button data-go="gram" class=""><svg viewBox="0 0 24 24"><path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"></path><path d="M8 8h6M8 12h6"></path></svg>Правила</button>
+  <button data-go="sound" class=""><svg viewBox="0 0 24 24"><path d="M4 15V9h4l5-4v14l-5-4z"></path><path d="M17 9.5a4 4 0 0 1 0 5"></path></svg>Звуки</button>
+  <button data-go="read" class=""><svg viewBox="0 0 24 24"><path d="M12 6.5C10 5 7.5 4.5 4 5v13c3.5-.5 6 0 8 1.5 2-1.5 4.5-2 8-1.5V5c-3.5-.5-6 0-8 1.5z"></path><path d="M12 6.5v13"></path></svg>Тексты</button>
+</nav></div></div></figure>
+<figure><figcaption>Как это устроено</figcaption>
+  <div class="phone"><div class="view app"><div class="wrap">
+  <div id="home-body">
+  <button class="btn ghost back" onclick="go('home')">← на главную</button>
+  <h1>Как это устроено</h1>
+  <p class="lead">Приложение работает не так, как большинство языковых сервисов. Разница в одном: оно рассчитывает, когда ты забудешь слово, и показывает его прямо перед этим.</p>
+
+  <h2>Четыре кнопки под карточкой</h2>
+  <p>Это не оценка тебя — это сообщение алгоритму, через сколько дней слово стоит показать снова. Отвечать надо честно: завысишь — забудешь, занизишь — будешь видеть одно и то же.</p>
+  <div class="forms-list" style="margin-top:var(--s4)">
+    <div class="frow"><i>Не помню</i><b>вернётся сегодня</b></div>
+    <div class="frow"><i>Трудно</i><b>интервал почти не растёт</b></div>
+    <div class="frow"><i>Нормально</i><b>интервал растёт как обычно</b></div>
+    <div class="frow"><i>Легко</i><b>интервал растёт быстрее</b></div>
+  </div>
+
+  <h2>Откуда берутся интервалы</h2>
+  <p>Память теряет новое не постепенно, а рывком: большая часть выученного уходит в первые сутки. Но каждое возвращение к слову делает эту кривую положе. Поэтому повторять важнее <b>вовремя</b>, чем часто.</p>
+  <p>Алгоритм ведёт для каждого слова свой счёт: сначала показывает через день, потом через три, потом через неделю, месяц, полгода. Если слово даётся тяжело, интервал сокращается автоматически.</p>
+
+  <h2>Что значит «выучено»</h2>
+  <p>Слово попадает в этот счётчик после двух успешных повторений подряд. Это не значит, что ты знаешь его навсегда, — это значит, что оно ушло в долгую очередь и вернётся нескоро.</p>
+
+  <h2>Почему нет счётчика дней подряд</h2>
+  <p>Потому что он мотивирует не учиться, а не терять цифру. Пропустила день — цифра сгорела — смысл продолжать пропал. Здесь пропуск не наказывается ничем: карточки просто дождутся, очередь будет длиннее, а выученное останется выученным.</p>
+
+  <h2>Зачем транскрипция</h2>
+  <p>Английское написание почти не связано с произношением: <i>through</i>, <i>though</i>, <i>tough</i> читаются по-разному. Угадывать бесполезно, поэтому у каждого слова стоит запись звучания в международном алфавите. Он читается за один вечер и дальше работает всю жизнь.</p>
+
+  <h2>В обе стороны</h2>
+  <p>Карточка иногда спрашивает «что значит это слово», а иногда «как это по-английски». Первое тренирует понимание, второе — способность вспомнить слово в разговоре. Это разные навыки, и второй важнее для речи.</p>
+
+  <h2>Свои слова</h2>
+  <p>Любое слово из текста можно тапнуть и добавить в карточки. Слова, которые ты выбрала сама, запоминаются заметно лучше выданных — просто потому, что встретились в живом тексте, а не в списке.</p>
+  <div style="height:var(--s6)"></div></div>
+</div><nav>
+  <button data-go="home" class="on"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V20h14V9.5"></path></svg>Дом</button>
+  <button data-go="cards" class=""><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="14" rx="2.5"></rect><path d="M7 3h11a3 3 0 0 1 3 3v11"></path></svg><span style="position:relative">Слова<i class="badge" id="nav-due" style="display: inline-block;">77</i></span></button>
+  <button data-go="trip" class=""><svg viewBox="0 0 24 24"><path d="M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"></path><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8"></path></svg>Фразы</button>
+  <button data-go="gram" class=""><svg viewBox="0 0 24 24"><path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"></path><path d="M8 8h6M8 12h6"></path></svg>Правила</button>
+  <button data-go="sound" class=""><svg viewBox="0 0 24 24"><path d="M4 15V9h4l5-4v14l-5-4z"></path><path d="M17 9.5a4 4 0 0 1 0 5"></path></svg>Звуки</button>
+  <button data-go="read" class=""><svg viewBox="0 0 24 24"><path d="M12 6.5C10 5 7.5 4.5 4 5v13c3.5-.5 6 0 8 1.5 2-1.5 4.5-2 8-1.5V5c-3.5-.5-6 0-8 1.5z"></path><path d="M12 6.5v13"></path></svg>Тексты</button>
+</nav></div></div></figure>
+<figure><figcaption>Формы глаголов</figcaption>
+  <div class="phone"><div class="view app"><div class="wrap">
+  <div id="gram-body">
+    <button class="btn ghost back" onclick="go('gram')">← грамматика</button>
+    <h1>Формы глаголов</h1>
+    <p class="lead">Выучить слово мало: чтобы построить фразу, глагол надо уметь поставить в нужную форму.</p>
+    <div class="note why">
+      У английского глагола пять рабочих форм. Четыре из них строятся по правилу и учить их не нужно —
+      достаточно знать правило. А вот <b>76 глаголов</b> меняются не по правилу, и это как раз самые
+      частые слова языка. Их придётся знать наизусть, но не по алфавиту: ниже они разложены по образцам
+      изменения, и внутри группы форма угадывается.
+    </div>
+
+    <h2>Правило для остальных</h2>
+    <div class="forms">
+      <div class="forms-list">
+        <div class="frow"><i>I, you, we, they</i><b>work</b></div>
+        <div class="frow"><i>he, she, it</i><b>works</b></div>
+        <div class="frow"><i>вчера</i><b class="key">worked</b></div>
+        <div class="frow"><i>I have…, it was…</i><b class="key">worked</b></div>
+        <div class="frow"><i>сейчас, в процессе</i><b>working</b></div>
+      </div>
+    </div>
+    <p class="tiny" style="margin-top:var(--s3)">Три уточнения к правилу: после -e добавляется только -d (like → liked);
+    согласная плюс -y даёт -ied (study → studied); короткое слово с одной гласной удваивает последнюю букву (stop → stopped).</p>
+
+    
+      <h2>Все три формы одинаковые</h2>
+      <p class="tiny" style="margin:calc(var(--s2) * -1) 0 var(--s3)">Самая лёгкая группа: учить нечего, форма одна на все времена.</p>
+      <div class="vtable">
+        <div class="vhead"><span>начальная</span><span>вчера</span><span>после have</span></div>
+        <div class="vrow">
+          <span class="v1">put</span><span>put</span><span>put</span>
+          <span class="vru">класть</span>
+        </div><div class="vrow">
+          <span class="v1">cut</span><span>cut</span><span>cut</span>
+          <span class="vru">резать</span>
+        </div><div class="vrow">
+          <span class="v1">let</span><span>let</span><span>let</span>
+          <span class="vru">позволять</span>
+        </div><div class="vrow">
+          <span class="v1">set</span><span>set</span><span>set</span>
+          <span class="vru">устанавливать</span>
+        </div><div class="vrow">
+          <span class="v1">hit</span><span>hit</span><span>hit</span>
+          <span class="vru">ударять</span>
+        </div><div class="vrow">
+          <span class="v1">cost</span><span>cost</span><span>cost</span>
+          <span class="vru">стоить</span>
+        </div><div class="vrow">
+          <span class="v1">shut</span><span>shut</span><span>shut</span>
+          <span class="vru">закрывать</span>
+        </div><div class="vrow">
+          <span class="v1">hurt</span><span>hurt</span><span>hurt</span>
+          <span class="vru">болеть; ранить</span>
+        </div><div class="vrow">
+          <span class="v1">read</span><span>read</span><span>read</span>
+          <span class="vru">читать</span>
+        </div>
+      </div>
+      <p class="tiny" style="margin-top:var(--s3)">У read все три формы пишутся одинаково, но прошедшее и третья читаются /red/, а начальная — /riːd/. На письме разницы нет, только в звучании.</p>
+      <button class="btn primary block" style="margin-top:var(--s3)" onclick="addVerbGroup('v-same')">
+        Учить эту группу · 9 глаголов
+      </button>
+      <h2>Первая и третья совпадают</h2>
+      <p class="tiny" style="margin:calc(var(--s2) * -1) 0 var(--s3)">Меняется только прошедшее время, потом форма возвращается.</p>
+      <div class="vtable">
+        <div class="vhead"><span>начальная</span><span>вчера</span><span>после have</span></div>
+        <div class="vrow">
+          <span class="v1">come</span><span>came</span><span>come</span>
+          <span class="vru">приходить</span>
+        </div><div class="vrow">
+          <span class="v1">become</span><span>became</span><span>become</span>
+          <span class="vru">становиться</span>
+        </div><div class="vrow">
+          <span class="v1">run</span><span>ran</span><span>run</span>
+          <span class="vru">бежать</span>
+        </div>
+      </div>
+      <p class="tiny" style="margin-top:var(--s3)">Группа крошечная, но глаголы в ней очень ходовые — выучиваются за один заход.</p>
+      <button class="btn primary block" style="margin-top:var(--s3)" onclick="addVerbGroup('v-131')">
+        Учить эту группу · 3 глагола
+      </button>
+      <h2>Образец i — a — u</h2>
+      <p class="tiny" style="margin:calc(var(--s2) * -1) 0 var(--s3)">Меняется только гласная в корне, по одной и той же схеме.</p>
+      <div class="vtable">
+        <div class="vhead"><span>начальная</span><span>вчера</span><span>после have</span></div>
+        <div class="vrow">
+          <span class="v1">sing</span><span>sang</span><span>sung</span>
+          <span class="vru">петь</span>
+        </div><div class="vrow">
+          <span class="v1">drink</span><span>drank</span><span>drunk</span>
+          <span class="vru">пить</span>
+        </div><div class="vrow">
+          <span class="v1">swim</span><span>swam</span><span>swum</span>
+          <span class="vru">плавать</span>
+        </div><div class="vrow">
+          <span class="v1">begin</span><span>began</span><span>begun</span>
+          <span class="vru">начинать</span>
+        </div><div class="vrow">
+          <span class="v1">ring</span><span>rang</span><span>rung</span>
+          <span class="vru">звонить</span>
+        </div>
+      </div>
+      <p class="tiny" style="margin-top:var(--s3)">Заметив образец один раз, дальше вы его узнаёте автоматически: i в начальной, a в прошедшем, u в третьей.</p>
+      <button class="btn primary block" style="margin-top:var(--s3)" onclick="addVerbGroup('v-iau')">
+        Учить эту группу · 5 глаголов
+      </button>
+      <h2>Окончание -ought и -aught</h2>
+      <p class="tiny" style="margin:calc(var(--s2) * -1) 0 var(--s3)">Слово меняется сильно, зато прошедшее и третья форма одинаковые.</p>
+      <div class="vtable">
+        <div class="vhead"><span>начальная</span><span>вчера</span><span>после have</span></div>
+        <div class="vrow">
+          <span class="v1">buy</span><span>bought</span><span>bought</span>
+          <span class="vru">покупать</span>
+        </div><div class="vrow">
+          <span class="v1">bring</span><span>brought</span><span>brought</span>
+          <span class="vru">приносить</span>
+        </div><div class="vrow">
+          <span class="v1">think</span><span>thought</span><span>thought</span>
+          <span class="vru">думать</span>
+        </div><div class="vrow">
+          <span class="v1">fight</span><span>fought</span><span>fought</span>
+          <span class="vru">драться</span>
+        </div><div class="vrow">
+          <span class="v1">catch</span><span>caught</span><span>caught</span>
+          <span class="vru">ловить</span>
+        </div><div class="vrow">
+          <span class="v1">teach</span><span>taught</span><span>taught</span>
+          <span class="vru">учить (кого-то)</span>
+        </div>
+      </div>
+      <p class="tiny" style="margin-top:var(--s3)">Все шесть читаются с одним и тем же звуком /ɔːt/. Буквы разные, звук общий.</p>
+      <button class="btn primary block" style="margin-top:var(--s3)" onclick="addVerbGroup('v-ought')">
+        Учить эту группу · 6 глаголов
+      </button>
+      <h2>Прошедшее и третья форма совпадают</h2>
+      <p class="tiny" style="margin:calc(var(--s2) * -1) 0 var(--s3)">Самая большая группа. Достаточно запомнить одну изменённую форму вместо двух.</p>
+      <div class="vtable">
+        <div class="vhead"><span>начальная</span><span>вчера</span><span>после have</span></div>
+        <div class="vrow">
+          <span class="v1">have</span><span>had</span><span>had</span>
+          <span class="vru">иметь</span>
+        </div><div class="vrow">
+          <span class="v1">make</span><span>made</span><span>made</span>
+          <span class="vru">делать</span>
+        </div><div class="vrow">
+          <span class="v1">say</span><span>said</span><span>said</span>
+          <span class="vru">сказать</span>
+        </div><div class="vrow">
+          <span class="v1">get</span><span>got</span><span>got</span>
+          <span class="vru">получать</span>
+        </div><div class="vrow">
+          <span class="v1">find</span><span>found</span><span>found</span>
+          <span class="vru">находить</span>
+        </div><div class="vrow">
+          <span class="v1">hear</span><span>heard</span><span>heard</span>
+          <span class="vru">слышать</span>
+        </div><div class="vrow">
+          <span class="v1">hold</span><span>held</span><span>held</span>
+          <span class="vru">держать</span>
+        </div><div class="vrow">
+          <span class="v1">keep</span><span>kept</span><span>kept</span>
+          <span class="vru">хранить</span>
+        </div><div class="vrow">
+          <span class="v1">sleep</span><span>slept</span><span>slept</span>
+          <span class="vru">спать</span>
+        </div><div class="vrow">
+          <span class="v1">feel</span><span>felt</span><span>felt</span>
+          <span class="vru">чувствовать</span>
+        </div><div class="vrow">
+          <span class="v1">leave</span><span>left</span><span>left</span>
+          <span class="vru">уходить</span>
+        </div><div class="vrow">
+          <span class="v1">meet</span><span>met</span><span>met</span>
+          <span class="vru">встречать</span>
+        </div><div class="vrow">
+          <span class="v1">lose</span><span>lost</span><span>lost</span>
+          <span class="vru">терять</span>
+        </div><div class="vrow">
+          <span class="v1">sit</span><span>sat</span><span>sat</span>
+          <span class="vru">сидеть</span>
+        </div><div class="vrow">
+          <span class="v1">stand</span><span>stood</span><span>stood</span>
+          <span class="vru">стоять</span>
+        </div><div class="vrow">
+          <span class="v1">understand</span><span>understood</span><span>understood</span>
+          <span class="vru">понимать</span>
+        </div><div class="vrow">
+          <span class="v1">pay</span><span>paid</span><span>paid</span>
+          <span class="vru">платить</span>
+        </div><div class="vrow">
+          <span class="v1">tell</span><span>told</span><span>told</span>
+          <span class="vru">рассказывать</span>
+        </div><div class="vrow">
+          <span class="v1">sell</span><span>sold</span><span>sold</span>
+          <span class="vru">продавать</span>
+        </div><div class="vrow">
+          <span class="v1">spend</span><span>spent</span><span>spent</span>
+          <span class="vru">тратить</span>
+        </div><div class="vrow">
+          <span class="v1">send</span><span>sent</span><span>sent</span>
+          <span class="vru">отправлять</span>
+        </div><div class="vrow">
+          <span class="v1">lend</span><span>lent</span><span>lent</span>
+          <span class="vru">одалживать</span>
+        </div><div class="vrow">
+          <span class="v1">build</span><span>built</span><span>built</span>
+          <span class="vru">строить</span>
+        </div><div class="vrow">
+          <span class="v1">mean</span><span>meant</span><span>meant</span>
+          <span class="vru">значить</span>
+        </div><div class="vrow">
+          <span class="v1">feed</span><span>fed</span><span>fed</span>
+          <span class="vru">кормить</span>
+        </div><div class="vrow">
+          <span class="v1">lead</span><span>led</span><span>led</span>
+          <span class="vru">вести</span>
+        </div><div class="vrow">
+          <span class="v1">learn</span><span>learnt</span><span>learnt</span>
+          <span class="vru">учить</span>
+        </div>
+      </div>
+      <p class="tiny" style="margin-top:var(--s3)">У learn, burn, dream есть и правильный вариант с -ed: learned, burned, dreamed. В Британии чаще -t, в Америке -ed. Обе формы верны.</p>
+      <button class="btn primary block" style="margin-top:var(--s3)" onclick="addVerbGroup('v-23')">
+        Учить эту группу · 27 глаголов
+      </button>
+      <h2>Образец -ew и -own</h2>
+      <p class="tiny" style="margin:calc(var(--s2) * -1) 0 var(--s3)">Прошедшее оканчивается на -ew, третья форма на -own.</p>
+      <div class="vtable">
+        <div class="vhead"><span>начальная</span><span>вчера</span><span>после have</span></div>
+        <div class="vrow">
+          <span class="v1">know</span><span>knew</span><span>known</span>
+          <span class="vru">знать</span>
+        </div><div class="vrow">
+          <span class="v1">grow</span><span>grew</span><span>grown</span>
+          <span class="vru">расти</span>
+        </div><div class="vrow">
+          <span class="v1">throw</span><span>threw</span><span>thrown</span>
+          <span class="vru">бросать</span>
+        </div><div class="vrow">
+          <span class="v1">blow</span><span>blew</span><span>blown</span>
+          <span class="vru">дуть</span>
+        </div><div class="vrow">
+          <span class="v1">fly</span><span>flew</span><span>flown</span>
+          <span class="vru">летать</span>
+        </div><div class="vrow">
+          <span class="v1">draw</span><span>drew</span><span>drawn</span>
+          <span class="vru">рисовать</span>
+        </div>
+      </div>
+      <p class="tiny" style="margin-top:var(--s3)">Здесь тоже работает образец: увидев -ew, можно предсказать -own, и наоборот.</p>
+      <button class="btn primary block" style="margin-top:var(--s3)" onclick="addVerbGroup('v-ewown')">
+        Учить эту группу · 6 глаголов
+      </button>
+      <h2>Все три формы разные</h2>
+      <p class="tiny" style="margin:calc(var(--s2) * -1) 0 var(--s3)">Учить придётся целиком, зато это самые частые глаголы языка.</p>
+      <div class="vtable">
+        <div class="vhead"><span>начальная</span><span>вчера</span><span>после have</span></div>
+        <div class="vrow">
+          <span class="v1">be</span><span>was</span><span>been</span>
+          <span class="vru">быть</span>
+        </div><div class="vrow">
+          <span class="v1">go</span><span>went</span><span>gone</span>
+          <span class="vru">идти</span>
+        </div><div class="vrow">
+          <span class="v1">do</span><span>did</span><span>done</span>
+          <span class="vru">делать</span>
+        </div><div class="vrow">
+          <span class="v1">see</span><span>saw</span><span>seen</span>
+          <span class="vru">видеть</span>
+        </div><div class="vrow">
+          <span class="v1">take</span><span>took</span><span>taken</span>
+          <span class="vru">брать</span>
+        </div><div class="vrow">
+          <span class="v1">give</span><span>gave</span><span>given</span>
+          <span class="vru">давать</span>
+        </div><div class="vrow">
+          <span class="v1">write</span><span>wrote</span><span>written</span>
+          <span class="vru">писать</span>
+        </div><div class="vrow">
+          <span class="v1">speak</span><span>spoke</span><span>spoken</span>
+          <span class="vru">говорить</span>
+        </div><div class="vrow">
+          <span class="v1">break</span><span>broke</span><span>broken</span>
+          <span class="vru">ломать</span>
+        </div><div class="vrow">
+          <span class="v1">choose</span><span>chose</span><span>chosen</span>
+          <span class="vru">выбирать</span>
+        </div><div class="vrow">
+          <span class="v1">drive</span><span>drove</span><span>driven</span>
+          <span class="vru">водить</span>
+        </div><div class="vrow">
+          <span class="v1">eat</span><span>ate</span><span>eaten</span>
+          <span class="vru">есть</span>
+        </div><div class="vrow">
+          <span class="v1">fall</span><span>fell</span><span>fallen</span>
+          <span class="vru">падать</span>
+        </div><div class="vrow">
+          <span class="v1">forget</span><span>forgot</span><span>forgotten</span>
+          <span class="vru">забывать</span>
+        </div><div class="vrow">
+          <span class="v1">wake</span><span>woke</span><span>woken</span>
+          <span class="vru">просыпаться</span>
+        </div><div class="vrow">
+          <span class="v1">wear</span><span>wore</span><span>worn</span>
+          <span class="vru">носить</span>
+        </div><div class="vrow">
+          <span class="v1">hide</span><span>hid</span><span>hidden</span>
+          <span class="vru">прятать</span>
+        </div><div class="vrow">
+          <span class="v1">steal</span><span>stole</span><span>stolen</span>
+          <span class="vru">красть</span>
+        </div><div class="vrow">
+          <span class="v1">rise</span><span>rose</span><span>risen</span>
+          <span class="vru">подниматься</span>
+        </div><div class="vrow">
+          <span class="v1">show</span><span>showed</span><span>shown</span>
+          <span class="vru">показывать</span>
+        </div>
+      </div>
+      <p class="tiny" style="margin-top:var(--s3)">Третья форма здесь чаще всего оканчивается на -en. Это не правило, но подсказка, которая часто выручает.</p>
+      <button class="btn primary block" style="margin-top:var(--s3)" onclick="addVerbGroup('v-all')">
+        Учить эту группу · 20 глаголов
+      </button>
+    <div style="height:var(--s6)"></div></div>
+</div><nav>
+  <button data-go="home" class="on"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V20h14V9.5"></path></svg>Дом</button>
+  <button data-go="cards" class=""><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="14" rx="2.5"></rect><path d="M7 3h11a3 3 0 0 1 3 3v11"></path></svg><span style="position:relative">Слова<i class="badge" id="nav-due" style="display: inline-block;">77</i></span></button>
+  <button data-go="trip" class=""><svg viewBox="0 0 24 24"><path d="M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"></path><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8"></path></svg>Фразы</button>
+  <button data-go="gram" class=""><svg viewBox="0 0 24 24"><path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"></path><path d="M8 8h6M8 12h6"></path></svg>Правила</button>
+  <button data-go="sound" class=""><svg viewBox="0 0 24 24"><path d="M4 15V9h4l5-4v14l-5-4z"></path><path d="M17 9.5a4 4 0 0 1 0 5"></path></svg>Звуки</button>
+  <button data-go="read" class=""><svg viewBox="0 0 24 24"><path d="M12 6.5C10 5 7.5 4.5 4 5v13c3.5-.5 6 0 8 1.5 2-1.5 4.5-2 8-1.5V5c-3.5-.5-6 0-8 1.5z"></path><path d="M12 6.5v13"></path></svg>Тексты</button>
+</nav></div></div></figure>
+<figure><figcaption>Карточка глагола</figcaption>
+  <div class="phone"><div class="view app"><div class="wrap">
+  <div id="cards-body">
+  <div class="row" style="margin-bottom:var(--s2)">
+    <button class="btn ghost" onclick="go('home')">← выйти</button>
+    <div class="spacer"></div>
+    <span class="tiny num">0 / 77</span>
+  </div>
+  <div class="bar" style="margin-bottom:var(--s5)"><i style="width:0%"></i></div>
+
+  <div class="flip flipped" onclick="if(!flip){flip=true;render()}">
+    <div class="flip-inner">
+      <div class="face front">
+        <div class="ask">какие формы?</div>
+      <div class="term" style="font-size:2.7rem">go</div>
+      <div class="pos">идти</div>
+        <p class="tiny" style="margin:var(--s6) 0 0">нажми, чтобы увидеть ответ</p>
+      </div>
+      <div class="face back"><div class="vcard">
+        <div><i>начальная форма</i><b>go</b></div>
+        <div><i>вчера (прошедшее)</i><b>went</b></div>
+        <div><i>после have и was</i><b>gone</b></div>
+      </div>
+      <div class="meaning" style="font-size:1.15rem; margin-top:var(--s5)">идти</div>
+      <div style="margin-top:var(--s4)"><button class="speak" onclick="event.stopPropagation();speak('go, went, gone',1)"><svg viewBox="0 0 24 24"><path d="M4 15V9h3.5L12 5.5v13L7.5 15z"></path><path d="M15 10.5a3 3 0 0 1 0 3"></path><path d="M18 8a6 6 0 0 1 0 8"></path></svg> все три формы</button></div></div>
+    </div>
+  </div>
+
+  
+  <div class="grades" style="margin-top:var(--s4)">
+    <button class="grade g0" onclick="gradeCard('v:go',0)"><b>Не помню</b><span>сегодня ещё раз</span></button>
+    <button class="grade g1" onclick="gradeCard('v:go',1)"><b>Трудно</b><span>завтра</span></button>
+    <button class="grade g2" onclick="gradeCard('v:go',2)"><b>Нормально</b><span>завтра</span></button>
+    <button class="grade g3" onclick="gradeCard('v:go',3)"><b>Легко</b><span>через 3 дн.</span></button>
+  </div>
+  <p class="tiny" style="text-align:center;margin-top:var(--s4)">Отвечай честно — от этого зависит, когда слово вернётся.</p>
+  </div>
+</div><nav>
+  <button data-go="home" class="on"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V20h14V9.5"></path></svg>Дом</button>
+  <button data-go="cards" class=""><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="14" rx="2.5"></rect><path d="M7 3h11a3 3 0 0 1 3 3v11"></path></svg><span style="position:relative">Слова<i class="badge" id="nav-due" style="display: inline-block;">77</i></span></button>
+  <button data-go="trip" class=""><svg viewBox="0 0 24 24"><path d="M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"></path><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8"></path></svg>Фразы</button>
+  <button data-go="gram" class=""><svg viewBox="0 0 24 24"><path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"></path><path d="M8 8h6M8 12h6"></path></svg>Правила</button>
+  <button data-go="sound" class=""><svg viewBox="0 0 24 24"><path d="M4 15V9h4l5-4v14l-5-4z"></path><path d="M17 9.5a4 4 0 0 1 0 5"></path></svg>Звуки</button>
+  <button data-go="read" class=""><svg viewBox="0 0 24 24"><path d="M12 6.5C10 5 7.5 4.5 4 5v13c3.5-.5 6 0 8 1.5 2-1.5 4.5-2 8-1.5V5c-3.5-.5-6 0-8 1.5z"></path><path d="M12 6.5v13"></path></svg>Тексты</button>
+</nav></div></div></figure>
+<figure><figcaption>Знакомство</figcaption>
+  <div class="phone"><div class="view app"><div class="wrap">
+  <div id="home-body">
+    <h1>Quiet English</h1>
+    <p class="lead">Коротко о том, как это работает. Тридцать секунд — и можно начинать.</p>
+    <div class="step" style="padding:var(--s4) 0;border-bottom:1px solid var(--line)">
+        <i>1</i>
+        <span><span style="font-weight:500">Здесь ничего не сгорает</span><div class="tiny" style="margin-top:2px">Нет счётчика дней подряд, нет сердечек, нет наград за регулярность. Приложение само считает, когда слово пора повторить, и если ты придёшь через две недели, просто покажет его позже. Вина — плохой мотиватор, поэтому её тут нет.</div></span>
+      </div><div class="step" style="padding:var(--s4) 0;border-bottom:1px solid var(--line)">
+        <i>2</i>
+        <span><span style="font-weight:500">Чтение важнее аудирования</span><div class="tiny" style="margin-top:2px">Глазами язык набирается быстрее и надёжнее, чем на слух: можно остановиться, перечитать, подумать. Озвучка есть везде, но она необязательна и никогда не блокирует прогресс.</div></span>
+      </div><div class="step" style="padding:var(--s4) 0;border-bottom:1px solid var(--line)">
+        <i>3</i>
+        <span><span style="font-weight:500">У каждого слова есть транскрипция</span><div class="tiny" style="margin-top:2px">Английское написание почти не связано с произношением, поэтому угадывать бесполезно. IPA — это точная запись звука, и она читается за один вечер.</div></span>
+      </div><div class="step" style="padding:var(--s4) 0;border-bottom:1px solid var(--line)">
+        <i>4</i>
+        <span><span style="font-weight:500">Грамматика объясняет «почему»</span><div class="tiny" style="margin-top:2px">Не «запомни правило», а «вот чем русский устроен иначе и откуда берётся ошибка». Так правила держатся в голове без зубрёжки.</div></span>
+      </div><div class="step" style="padding:var(--s4) 0;border-bottom:1px solid var(--line)">
+        <i>5</i>
+        <span><span style="font-weight:500">Есть готовый маршрут</span><div class="tiny" style="margin-top:2px">Разделов много, и легко растеряться. На главной есть «Путь» — девять шагов в разумном порядке, от первых фраз-выручалок до чтения. Шаги отмечаются сами, вести ничего вручную не нужно.</div></span>
+      </div>
+    <div class="stack" style="margin-top:var(--s5)">
+      <button class="btn primary block" onclick="S.seen=true;save();render()">Понятно, начнём</button>
+      <button class="btn block" onclick="S.seen=true;save();go('home','how')">Сначала подробнее о механике</button>
+    </div>
+    <div style="height:var(--s6)"></div></div>
+</div><nav>
+  <button data-go="home" class="on"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V20h14V9.5"></path></svg>Дом</button>
+  <button data-go="cards" class=""><svg viewBox="0 0 24 24"><rect x="3" y="6" width="14" height="14" rx="2.5"></rect><path d="M7 3h11a3 3 0 0 1 3 3v11"></path></svg><span style="position:relative">Слова<i class="badge" id="nav-due" style="display: inline-block;">77</i></span></button>
+  <button data-go="trip" class=""><svg viewBox="0 0 24 24"><path d="M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"></path><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8"></path></svg>Фразы</button>
+  <button data-go="gram" class=""><svg viewBox="0 0 24 24"><path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"></path><path d="M8 8h6M8 12h6"></path></svg>Правила</button>
+  <button data-go="sound" class=""><svg viewBox="0 0 24 24"><path d="M4 15V9h4l5-4v14l-5-4z"></path><path d="M17 9.5a4 4 0 0 1 0 5"></path></svg>Звуки</button>
+  <button data-go="read" class=""><svg viewBox="0 0 24 24"><path d="M12 6.5C10 5 7.5 4.5 4 5v13c3.5-.5 6 0 8 1.5 2-1.5 4.5-2 8-1.5V5c-3.5-.5-6 0-8 1.5z"></path><path d="M12 6.5v13"></path></svg>Тексты</button>
+</nav></div></div></figure>
+</div></body></html>
